@@ -1,0 +1,22 @@
+Continous Integration
+=====================
+
+.. toctree::
+    :hidden:
+
+    host
+    jenkins
+    build-slaves
+
+The continous integration infrastructure consists of different software which is hosted on Linux servers and together makes it possible to host code, build images and run tests.
+
+We use one master host which can host code and runs a build server instance.
+
+.. actdiag::
+
+   Nginx -> Docker -> Jenkins
+   Nginx -> YoctoCache
+   Nginx -> Documentation
+   Jenkins -> BuildSlave1
+   Jenkins -> BuildSlave2
+   Jenkins -> BuildSlaveN
