@@ -28,11 +28,11 @@ This runs Jenkins and mounts ``/var/www`` into the Jenkins container at the same
    
 Usage
 -----
+First, install docker according to the installation instructions for your distribution. These instructions are available in the Docker website [#dockerinstall]_.
 
 .. code-block:: bash
 
-   # Install docker and create a systemd service file
-   apt install docker.io
+   # Copy the Jenkins service file from the code block above into your systemd service directory
    cp docker.jenkins.service /lib/systemd/system/
 
    # Make jenkins start up on boot and start it now too
@@ -66,3 +66,5 @@ Plugins
 Normally we use the proposed plugins during installation and then add the following:
 
 - Copy Artifact Plugin
+
+.. [#dockerinstall]  https://docs.docker.com/engine/installation/
