@@ -66,5 +66,6 @@ Plugins
 Normally we use the proposed plugins during installation and then add the following:
 
 - Copy Artifact Plugin
+- Build Monitor View
 
 .. [#dockerinstall]  https://docs.docker.com/engine/installation/
