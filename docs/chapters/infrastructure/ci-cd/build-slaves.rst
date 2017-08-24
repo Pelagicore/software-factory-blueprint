@@ -16,20 +16,62 @@ In order to run a slave which the master can reach via SSH you still need to pre
    sudo useradd jenkins
    sudo usermod -aG docker jenkins
 
+Connecting to the slave using SSH
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Generating SSH keypairs
+"""""""""""""""""""""""
+
+A private and public SSH keypair must be generated. The Jenkins master server will connect to the Jenkins build slaves using SSH. The Jenkins master server will have the SSH *private* key, in order to initiate the SSH connection, and the Jenkins build slaves will have *public* keys added to their respective ``jenkins`` users.
+
+Generate one keypair per build slave using the following command:
+
+.. code-block:: bash
+
+    ssh-keygen -f build_slave_key
+
+Add the public key file (``build_slave_key.pub``) to ``/home/jenkins/.ssh/authorized_keys`` on your Jenkins *build slave* (or replace ``jenkins`` with the user you chose for your Jenkins build slave). Save the private key. It will be used when configuring Jenkins.
+
+Configuring Jenkins
+"""""""""""""""""""
+
+1. Go to Jenkins -> Manage Jenkins -> Nodes -> New Node
+2. Add the node name and set "Permanent Agent"
+3. Put in the name and the remote root directory, you should have a special user like ``jenkins`` to run it so set ``/home/jenkins/``
+4. Set the labels which this slave can run, for example ``DockerCI``
+5. Have the Launch method set to "Launch slave agents via SSH"
+6. Enter the address to the slave in the "Host" field
+7. If you already have the credentials added for this slave, select them in the "Credentials" field, and skip steps 7a-7f. If not, press the "Add" button in the "Credentials" field, and follow steps 7a-7f.
+
+    * 7a. Set "Domain" to "Global credentials (unrestricted)"
+    * 7b. Set "Kind" to "SSH username with private key"
+    * 7c. Set "Username" to "jenkins" (assuming that you use this UNIX username for your jenkins user)
+    * 7d. Set "Private Key" to "Enter Directly", and supply the *private* key you generated previously
+    * 7e. Set "Passphrase" as needed, or leave empty if no passphrase is set
+    * 7f. Set "Description" to a suitable description
+
+8. Select the correct key in "Credentials"
+9. Set "Host Key Verification Strategy" to "Non verifying Verification Strategy"
+10. Set "Availability" to "Keep this agent online as much as possible"
+11. Press "Save"
+
+You may verify the status of the build slave under the status page of the build slave.
+
+
 Running a private slave
 -----------------------
 
 Sometimes it's necessary to run slaves from a private network. Then you need to run a java program which will connect to the master instead the master connecting to the slave. To do so, set up a new slave in Jenkins.
 
 Prerequisites
-_____________
+^^^^^^^^^^^^^
 
 You need to have the same Java version running on the slave as your Jenkins master runs. Nowadays the docker LTS version runs Java 8.
 
 Best practice is also to create a unix user the slave will run with on your machine, you can call the user jenkins. If you will run Docker, make sure this user is in the ``docker`` group.
 
 How to setup and install
-________________________
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Replace <URL> in the file with the real URL to the Jenkins server.
 
