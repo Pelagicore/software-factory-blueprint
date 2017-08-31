@@ -1,0 +1,6 @@
+#
+# Key=Value. Don't keep '=' in the value
+#
+# Blank lines and lines starting with # are ignored
+#
+# Example: proj_name=PELUX

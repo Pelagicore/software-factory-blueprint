@@ -19,7 +19,12 @@
 import os
 import sys
 import subprocess
-# sys.path.insert(0, os.path.abspath('.'))
+
+THISDIR='@CMAKE_CURRENT_SOURCE_DIR@'
+
+# Include the local path to the substitutions module, so we can import it
+sys.path.append(os.path.abspath(os.path.join(THISDIR, 'python_modules')))
+from substitutions import subst as substitutions
 
 # -- General configuration ------------------------------------------------
 
@@ -41,9 +46,8 @@ extensions = [
 ]
 
 # Substitutions for common names. Key is replaced value in the text of all .rst
-# documents.
-substs = {
-}
+# documents. This reads a predefined file with key/value pairs
+substs = substitutions.substitutions(os.path.join(THISDIR, "swf-substitutions.txt"))
 
 # Duplicate all entries with different formatting options
 # This ensures that even formatted versions of the words in substs variable
