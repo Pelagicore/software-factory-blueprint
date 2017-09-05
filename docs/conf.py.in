@@ -45,6 +45,12 @@ extensions = [
     'sphinxcontrib.actdiag'
 ]
 
+# If this conf.py is used, we mark this as being the blueprint alone, as opposed to the blueprint
+# being used in a larger deployment of a software factory. This can be used in the text to only
+# include some explanations if we're building the blueprint alone - in a larger deployment they
+# would typically be replaced by some project specific description.
+tags.add('blueprint')
+
 # Substitutions for common names. Key is replaced value in the text of all .rst
 # documents. This reads a predefined file with key/value pairs
 substs = substitutions.substitutions(os.path.join(THISDIR, "swf-substitutions.txt"))

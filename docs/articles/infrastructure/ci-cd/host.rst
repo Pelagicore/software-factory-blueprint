@@ -17,7 +17,7 @@ This is a example Nginx configuration which can be reused to set up a proxy serv
     }
 
     http {
-     
+
         include            mime.types;
         default_type       application/octet-stream;
         sendfile           on;
@@ -48,12 +48,12 @@ This is a example Nginx configuration which can be reused to set up a proxy serv
             location = /50x.html {
                 root   /usr/share/nginx/html;
             }
-            
+
             # Nginx configuration specific to Jenkins
             # Note that regex takes precedence, so use of "^~" ensures earlier evaluation
             location ^~ /jenkins/ {
 
-                # Convert inbound WAN requests for https://domain.tld/jenkins/ to 
+                # Convert inbound WAN requests for https://domain.tld/jenkins/ to
                 # local network requests for http://127.0.0.1:8080/jenkins/
                 proxy_pass http://127.0.0.1:8080/jenkins/;
 

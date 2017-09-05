@@ -6,6 +6,9 @@ Software Factory Blueprint is maintained at https://github.com/Pelagicore/softwa
 
 Maintainer: Joakim Gross <joakim.gross@pelagicore.com>
 
+## Note
+You probably don't want to build the blueprint on its own, but rather use it as part of a deployment
+Software Factory. This approach is described in the intro chapter of these docs.
 
 ## Dependencies
 * Sphinx

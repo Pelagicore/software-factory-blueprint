@@ -1,4 +1,3 @@
-
 Software Factory Blueprint
 **************************
 Revision: |release|
@@ -7,5 +6,14 @@ Revision: |release|
     :caption: Table of contents:
     :maxdepth: 3
 
-    chapters/intro/intro.rst
-    chapters/infrastructure/ci-cd/index.rst
+    articles/intro/index.rst
+
+    articles/baseplatform/index.rst
+
+    articles/infrastructure/ci-cd/index.rst
+
+    articles/licensing/index.rst
+
+    articles/sdk/index.rst
+
+    articles/workflow/git-workflow.rst
