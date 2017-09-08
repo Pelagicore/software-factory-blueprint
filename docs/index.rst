@@ -16,4 +16,6 @@ Revision: |release|
 
     articles/sdk/index.rst
 
+    articles/templates/index.rst
+
     articles/workflow/git-workflow.rst
