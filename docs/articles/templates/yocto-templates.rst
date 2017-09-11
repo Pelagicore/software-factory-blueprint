@@ -1,3 +1,5 @@
+.. _yocto-project-integration:
+
 Yocto Project integration
 =========================
 

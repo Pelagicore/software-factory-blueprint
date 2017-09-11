@@ -140,6 +140,11 @@ and ``bblayers.conf.sample``:
   variable specifies the layers to use for your Yocto build. This variable needs
   to contain all layers you intend to include.
 
+Including some software in your layer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+See the target integration section in :ref:`yocto-project-integration`
+
+
 .. note:: As always, for additional options and full documentation of BitBake
           concepts. See the BitBake user manual [#bbmanual]_.
 
