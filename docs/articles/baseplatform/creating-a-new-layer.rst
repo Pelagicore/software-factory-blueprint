@@ -7,8 +7,10 @@ A new layer should be added in a few different scenarios:
   new layer)
 * An easily separable, distinct new feature, easily reusable by other projects
   is added
-    - An example of this could be a layer for a maps and navigation software, or a
+
+    * An example of this could be a layer for a maps and navigation software, or a
       new graphical framework (such as Qt, or GTK, etc.)
+
 * An existing project needs to be tweaked somehow, such as changing color
   schemes of an existing HMI for use in an exhibition
 
