@@ -33,3 +33,17 @@ Cross Compiling
 In the easiest case, when all the projects dependencies are already installed in the SDK,
 crosscompiling is really easy. Navigate in to the directory and use cmake and make to compile it as
 you normally would. The environment will make sure that the right compiler and cmake will be used.
+
+In the case of additional external dependencies, it's recommended to install them into the SDK so
+that they can be found by tools like ``pkg-config``. The ``cmake`` tool provided with the SDK does
+that by default, so when building a shared library using ``cmake`` one would typically issue
+these commands:
+
+.. code-block:: bash
+
+    mkdir build && cd build
+    cmake ..
+    make
+    make install  # prefix with sudo, if the SDK sysroot is not user-writable
+
+and the library would be immediately usable by all applications building on the SDK.
