@@ -54,6 +54,11 @@ etc. If the cmake file in this project is not the one invoked explicitly,
 i.e. it is not the top level project cmake file, nothing will happen. This
 is to make sure this project does not interfere with the using project.
 
+And because of the fact how Sphinx creates toctrees in sidebars all the files
+which contain a toctree need to have the suffix `.trst` instead of just `.rst`.
+This way the projects which use this as a submodule are able to ignore the
+toctrees and build their own instead.
+
 # License and Copyright
 Copyright (C) Pelagicore AB 2017
 
