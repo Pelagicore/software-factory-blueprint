@@ -4,3 +4,5 @@
 # Blank lines and lines starting with # are ignored
 #
 # Example: proj_name=PELUX
+
+proj_name=Software Factory Blueprint
