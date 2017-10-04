@@ -10,4 +10,5 @@ Base platform
     writing-image.rst
     creating-sdk.rst
     creating-a-new-layer.rst
+    variant-concept-in-yocto.rst
 
