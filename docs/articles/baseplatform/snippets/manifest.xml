@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <!-- Settings -->
+  <default sync-j="4" revision="pyro" />
+
+  <!-- Remotes -->
+  <remote fetch="git://git.openembedded.org"    name="oe"/>
+  <remote fetch="git://github.com/"             name="github"/>
+  <remote fetch="git://code.qt.io/"             name="code.qt"/>
+
+  <!-- Base stuff -->
+  <project remote="oe"
+           revision="5e82995148a2844c6f483ae5ddd1438d87ea9fb7"
+           name="meta-openembedded"
+           path="sources/meta-openembedded"/>
+
+  <project remote="github"
+           revision="2c7899b9f71ce614a253d7875fe64e170159281a"
+           name="Pelagicore/meta-bistro"
+           path="sources/meta-bistro" />
+
+  <project remote="github"
+           revision="4861f6d58042909e6c79cb301c6eb39c349011bf"
+           name="Pelagicore/meta-pelux"
+           path="sources/meta-pelux" />
+
+  <!-- Qt Support stuff -->
+  <project remote="code.qt"
+           revision="c6aa602d0640040b470ee81de39726276ddc0ea3"
+           name="yocto/meta-qt5"
+           path="sources/meta-qt5"/>
+
+</manifest>
