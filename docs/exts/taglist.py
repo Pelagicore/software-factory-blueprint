@@ -38,7 +38,11 @@ from sphinx.environment import NoUri
 
 
 def initialize(app):
-    app.builder.env.tags = dict()
+    env = app.builder.env
+    if not hasattr(env, 'tags'):
+        env.tags = dict()
+    if not hasattr(env, 'taglist_docs'):
+        env.taglist_docs = []
 
 
 class tag_node(nodes.General, nodes.Element):
@@ -97,6 +101,10 @@ class TagListDirective(Directive):
         '''
         tl = taglist('')
         tl.tags = self.arguments
+
+        env = self.state.document.settings.env
+        if env.docname not in env.taglist_docs:
+            env.taglist_docs.append(env.docname)
 
         return [tl]
 
@@ -219,6 +227,41 @@ def process_taglist_nodes(app, doctree, fromdocname):
         node.replace_self(content)
 
 
+def purge_doc(app, env, docname):
+    '''Called whenever a document is changed or removed.
+
+    Remove all occurences of the document from all tags. The document will be
+    re-added when the source is read if the tag still persists.
+
+    Args:
+        app (Sphinx): The sphinx application object.
+        env (dict): The build environment.
+        fromdocname (str): The source document.
+
+    '''
+    tags = dict()
+    for tagname in env.tags:
+        newdocs = [doc for doc in env.tags[tagname] if doc['docname'] != docname]
+        if newdocs:
+            tags[tagname] = newdocs
+
+    env.tags = tags
+
+    if docname in env.taglist_docs:
+        env.taglist_docs.remove(docname)
+
+
+def reread_taglist_docs(app, env, added, changed, removed):
+    '''Called when sphinx has determined which source files have changed.
+
+    Returns:
+        A list of docnames to re-read in addition to what has already been
+        determined by sphinx.
+
+    '''
+    return env.taglist_docs
+
+
 def setup(app):
     app.add_node(taglist)
     app.add_node(tag_node)
@@ -229,5 +272,7 @@ def setup(app):
     app.connect('builder-inited', initialize)
     app.connect('doctree-read', process_tags)
     app.connect('doctree-resolved', process_taglist_nodes)
+    app.connect('env-purge-doc', purge_doc)
+    app.connect('env-get-outdated', reread_taglist_docs)
 
-    return {'version': '0.1'}  # identifies the version of the extension
+    return {'version': '0.2'}  # identifies the version of the extension
