@@ -7,6 +7,7 @@ Continous Integration
     host
     jenkins
     build-slaves
+    howto-yocto-cache
 
 The continous integration infrastructure consists of different software which is hosted on Linux servers and together makes it possible to host code, build images and run tests.
 
