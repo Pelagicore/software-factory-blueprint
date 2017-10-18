@@ -90,3 +90,4 @@ authors of this document follow and highly recommend `GNOME's commit message gui
 
 .. _`GNOME's commit message guidelines`: https://wiki.gnome.org/Git/CommitMessages/
 
+.. tags:: howto

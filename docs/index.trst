@@ -19,3 +19,11 @@ Revision: |release|
     articles/templates/index.rst
 
     articles/workflow/git-workflow.rst
+
+.. toctree::
+    :caption: Categories:
+    :maxdepth: 1
+
+    categories/howto.rst
+
+    categories/process.rst

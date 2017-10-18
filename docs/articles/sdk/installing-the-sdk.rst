@@ -36,3 +36,5 @@ Example:
     SDK has been successfully set up and is ready to be used.
 
 Now the SDK is installed and can be used.
+
+.. tags:: howto

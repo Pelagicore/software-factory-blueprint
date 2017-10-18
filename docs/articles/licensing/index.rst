@@ -21,3 +21,5 @@ tooling in a future proof way. As SPDX is the licensing standard that
 compliance tooling will be using in the future, and indeed already is
 used by tool makers such as WindRiver and Black Duck, they are included
 both for support for tooling and future proofing the format.
+
+.. tags:: process
