@@ -21,7 +21,7 @@ Recommended variant management
 
 The recommended way to handle variants is to keep one directory per variant in
 your layer. The variant directories should go into
-``<meta-yourlayer>/conf/<variant name>``. Each variant should supply a
+``<meta-yourlayer>/conf/variant/<variant name>``. Each variant should supply a
 ``README``, ``bblayers.conf.sample`` and ``local.conf.sample``.
 
 * ``README`` contains a short description of the variant, such as the hardware
@@ -35,6 +35,16 @@ your layer. The variant directories should go into
 * ``local.conf.sample`` is also specific to the current variant in the same way
   as ``bblayers.conf.sample``, but should contain the ``local.conf`` needed for
   the current variant.
+
+If many variants are using the same directives, it is recommended to have a
+``common`` directory with these directives in. The files that contain those
+common directives can then be included by the more specific variants that add
+the specific settings.
+
+.. note:: BitBake searches paths that are listed in the ``BBPATH`` variable, so
+          before including any files in ``bblayers.conf`` or ``local.conf``, one
+          has to make sure that those files can be found by setting ``BBPATH``
+          to include the layer in which they are located.
 
 Recommended usage of variants
 -----------------------------
