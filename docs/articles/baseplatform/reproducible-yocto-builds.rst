@@ -94,6 +94,7 @@ The download directory previously populated should be made available to the buil
 be used during build reproduction, e.g. by copying the download directory from the archive to
 a source directory in the root directory of the new Yocto build. The build directory should now
 look like this:
+
 .. code-block:: none
 
     .
