@@ -26,9 +26,6 @@ THISDIR='@CMAKE_CURRENT_SOURCE_DIR@'
 sys.path.append(os.path.abspath(os.path.join(THISDIR, 'python_modules')))
 from substitutions import subst as substitutions
 
-# Include custom sphinx extensions
-sys.path.append(os.path.abspath(os.path.join(THISDIR, 'exts')))
-
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -46,7 +43,7 @@ extensions = [
     'sphinxcontrib.blockdiag',
     'sphinxcontrib.seqdiag',
     'sphinxcontrib.actdiag',
-    'taglist'
+    'sphinxexts.taglist'
 ]
 
 # If this conf.py is used, we mark this as being the blueprint alone, as opposed to the blueprint
