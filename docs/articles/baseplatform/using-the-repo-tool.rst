@@ -1,3 +1,5 @@
+:orphan:
+
 .. _using-the-repo-tool:
 
 Using the repo tool

@@ -1,3 +1,5 @@
+:orphan:
+
 Reproducible Yocto builds
 =========================
 

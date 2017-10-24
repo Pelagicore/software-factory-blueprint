@@ -1,3 +1,5 @@
+:orphan:
+
 Building the SDK installer
 ===========================
 

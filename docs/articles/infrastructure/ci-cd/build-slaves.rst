@@ -1,3 +1,5 @@
+:orphan:
+
 Build Slaves
 ============
 

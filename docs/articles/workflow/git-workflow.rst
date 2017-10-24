@@ -1,3 +1,4 @@
+:orphan:
 
 Git workflow
 ************

@@ -1,3 +1,5 @@
+:orphan:
+
 Prerequisites for building a |proj_name| image
 ==============================================
 

@@ -1,3 +1,5 @@
+:orphan:
+
 C/C++ templates
 ***************
 

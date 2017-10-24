@@ -1,3 +1,5 @@
+:orphan:
+
 Variant concept in Yocto
 ========================
 

@@ -1,3 +1,5 @@
+:orphan:
+
 Using the SDK to cross compile
 ==============================
 
