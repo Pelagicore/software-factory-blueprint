@@ -16,9 +16,14 @@ build system. The CMake build system can be installed by following the
 instructions on the `CMake install webpage`_ or by using your Linux
 distribution's package manager.
 
-.. include:: directory-structure.rst
-.. include:: source-templates.rst
-.. include:: yocto-templates.rst
+.. toctree::
+    :caption: Table of contents
+
+    directory-structure.rst
+
+    source-templates.rst
+
+    yocto-templates.rst
 
 .. _CMake: https://cmake.org/
 .. _CMake install webpage: https://cmake.org/install/
