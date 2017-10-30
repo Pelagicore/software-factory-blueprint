@@ -152,5 +152,33 @@ See the target integration section in :ref:`yocto-project-integration`
 .. note:: As always, for additional options and full documentation of BitBake
           concepts. See the BitBake user manual [#bbmanual]_.
 
+Suggested practices
+-------------------
+What follows is a set of practical advices which help maintaining your own layer.
+
+Using a variable for the ``SRC_URI`` base
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When adding a new layer, it's likely that the source code of most of the components being added will
+be hosted in the same host. If that is the case, it might be a good idea to move the base URL of the
+repository group out into a separate variable defined in your layer's ``layer.conf`` file, and have
+the recipes use this variable when defining their ``SRC_URI``:
+
+.. code-block:: bash
+    :caption: conf/layer.conf
+
+    # Url of the git server hosting our software
+    MY_PROJECT_GIT_URL ?= "https://my-company.com/git"
+
+and
+
+.. code-block:: bash
+    :caption: Your recipe files
+
+    SRC_URI = "${MY_PROJECT_GIT_URL}/project.git"
+
+This can save you some later pain if the code gets moved to a new server, because in this way you
+won't need to modify all the recipes.
+
 .. [#bbmanual] http://www.yoctoproject.org/docs/latest/bitbake-user-manual/bitbake-user-manual.html
 .. [#templateconf] http://www.yoctoproject.org/docs/latest/dev-manual/dev-manual.html#creating-a-custom-template-configuration-directory
