@@ -1,5 +1,7 @@
 :orphan:
 
+.. _building-the-sdk:
+
 Building the SDK installer
 ===========================
 
