@@ -18,6 +18,10 @@ In order to run a slave which the master can reach via SSH you still need to pre
    sudo useradd jenkins
    sudo usermod -aG docker jenkins
 
+   # Configure docker to use overlay2 as storage driver
+   sudo echo "{ \"storage-driver\": \"overlay2\" }" > /etc/docker/daemon.json
+
+
 Connecting to the slave using SSH
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
