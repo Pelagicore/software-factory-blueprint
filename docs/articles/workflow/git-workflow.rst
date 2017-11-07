@@ -19,7 +19,7 @@ General setup
     $ git clone git@github.com:<username>/software-factory.git
     $ git remote add upstream git@github.com:Pelagicore/software-factory.git
 
-This will make the fork have ``origin`` as remote name, which we thing feels most natural for most
+This will make the fork have ``origin`` as remote name, which we think feels most natural for most
 developers, as it is the repository the developer will typically push to.  On the other hand, we
 recommend to always type the remote and branch name when pushing, which forces the developer to be
 more explicit about their intentions.
@@ -47,7 +47,7 @@ For each set of changes
 
 #. Make sure your branch is up-to-date with master ::
 
-   $ git pull upstream master --rebase
+    $ git pull upstream master --rebase
 
     This is to make sure that any conflicts that exist before pushing are resolved locally before
     pushing. It might be the case that there are more people working on the same code that has a

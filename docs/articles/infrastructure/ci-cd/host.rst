@@ -3,7 +3,11 @@
 Infrastructure host
 ===================
 
-Because we run all the parts of the infrastructure like code hosting, cache, documentation, on different software and probably in docker containers there needs to be one host server which will work as a proxy server to give easy access to all the applications in the infrastructure in a easy way. It might also be responsible to serve static files like documentation and cache.
+Because we run all the parts of the infrastructure like code hosting, cache,
+documentation, on different software and probably in docker containers there
+needs to be one host server which will work as a proxy server to give easy
+access to all the applications in the infrastructure in a easy way. It might
+also be responsible to serve static files like documentation and cache.
 
 Host Nginx configuration
 ------------------------

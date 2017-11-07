@@ -85,12 +85,12 @@ Replace <URL> in the file with the real URL to the Jenkins server.
 
    [Unit]
    Description=Jenkins slave for pelux.io
-   
+
    [Service]
    User=%i
    Restart=always
    ExecStart=/usr/bin/java -jar /home/%i/slave.jar -jnlpUrl <URL>/slave-agent.jnlp -secret <SECRET>
-   
+
    [Install]
    WantedBy=multi-user.target
 
