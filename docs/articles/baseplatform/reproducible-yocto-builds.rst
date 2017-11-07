@@ -36,7 +36,7 @@ package does not point to a specific commit but a tag, then Yocto won't create a
 Building with BB_NO_NETWORK
 ---------------------------
 
-Setting the ``BB_NO_NETWORK`` variable to "1" in build/conf/local.conf disables network access for
+Setting the ``BB_NO_NETWORK`` variable to "1" in ``build/conf/local.conf`` disables network access for
 bitbake during the build so that source code can only be fetched from specified local mirrors.
 This is a good way to guarantee that only specific sources will be used. However, this also means
 that bitbake will fail when issuing certain commands, for instance git ls-remote, and that it is
@@ -57,7 +57,7 @@ point to a specific commit.
 Configuring Yocto builds for reproducibility
 --------------------------------------------
 
-To create a local mirror, the following configuration needs to be added to build/conf/local.conf
+To create a local mirror, the following configuration needs to be added to ``build/conf/local.conf``
 (note that this is not a default configuration):
 
 .. code-block:: none
@@ -65,7 +65,7 @@ To create a local mirror, the following configuration needs to be added to build
     BB_GENERATE_MIRROR_TARBALLS = "1"
 
 During the Yocto build process, packages are downloaded and stored in the downloads/ directory
-(or whatever directory has been specified in build/conf/local.conf) of the Yocto build's
+(or whatever directory has been specified in ``build/conf/local.conf``) of the Yocto build's
 root directory.
 When set to "1", ``BB_GENERATE_MIRROR_TARBALLS`` forces bitbake to create tar-balls for all the
 sources that are fetched using git.
@@ -110,7 +110,7 @@ the release to be reproduced:
     $ repo init -u ssh://git@git.example.net/example-group/example-manifest-repository.git -b releases -m example-manifest.xml
     $ repo sync
 
-Then follow the build instructions to export the TEMPLATECONF and source the build environment.
+Then follow the build instructions to export the ``TEMPLATECONF`` and source the build environment.
 
 The build directory should now be initialized and look like this:
 
