@@ -6,3 +6,4 @@
 # Example: proj_name=PELUX
 
 proj_name=Software Factory Blueprint
+example-sdk-binary=test-binary
