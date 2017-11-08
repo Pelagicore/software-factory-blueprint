@@ -11,6 +11,7 @@ You probably don't want to build the blueprint on its own, but rather use it as 
 Software Factory. This approach is described in the intro chapter of these docs.
 
 ## Dependencies
+* cmake
 * Sphinx
 * sphinxcontrib-seqdiag
 * sphinxcontrib-blockdiag
@@ -24,7 +25,7 @@ Software Factory. This approach is described in the intro chapter of these docs.
 ###  Install build dependencies on Debian
 
 ```
-sudo apt-get install python-pip
+sudo apt-get install cmake python-pip
 sudo pip install \
     sphinxcontrib-seqdiag \
     sphinxcontrib-blockdiag \
