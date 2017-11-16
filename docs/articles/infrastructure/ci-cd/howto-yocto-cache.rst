@@ -1,3 +1,5 @@
+:orphan:
+
 Setting up and using a Yocto cache
 ==================================
 
