@@ -6,7 +6,9 @@ Using the SDK to cross compile
 Cross compiling with the help of the SDK is not much different from normal compilation. There are
 some more pitfalls, but let's get on with the happy cases for now.
 
-Sourcing Environment
+.. _sourcing-the-environment:
+
+Sourcing The Environment
 --------------------
 
 After the installation the SDK it needs to be sourced. This means that the SDK toolchain and the

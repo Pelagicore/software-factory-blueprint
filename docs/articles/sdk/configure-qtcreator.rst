@@ -1,9 +1,10 @@
 Configuring QtCreator to use the SDK
 ====================================
 
-After the installation of the SDK and ``source``\ing the environment, there are a couple of
-steps to do to run QtCreator in the SDK environment. This roadmap assumes
-that the SDK and QtCreator are installed and the environment is ``source``\d already.
+After :ref:`the installation of the SDK <installing-sdk>` and :ref:`sourcing the
+environment <sourcing-environment>`, there are a couple of steps to do to run
+QtCreator in the SDK environment. This roadmap assumes that the SDK and QtCreator
+are installed and the environment is ``source``\d already.
 
 Adding a new kit
 --------------------
@@ -15,6 +16,7 @@ setup to QtCreator.
 * Open Options form from Tools->Options, then click ``Build & Run`` in the left
   panel of the option window.
 * Select the ``Kits`` tab and click the ``Add`` button.
+
 .. image:: screenshots/add_new_kit.png
 * Name your new kit and as ``Device type`` choose ``GenericLinuxOsType``.
 * Then browse and select the path to the sysroot. If you don't know the sysroot
@@ -25,6 +27,7 @@ setup to QtCreator.
   Add your GCC path here. You can find this path in the environment as well.
   To do so, type ``which ${CC}`` in your terminal. Please note that the terminal
   should be ``source``\d beforehand.
+
 .. image:: screenshots/add_gcc.png
 * Choose the C++ compiler as you did in the previous step. You can find the path by
   typing ``which ${CXX}`` to the terminal. Please note that the terminal should be
@@ -34,10 +37,12 @@ setup to QtCreator.
 * Choose ``Debugger``, if it is not listed in the dropdown menu click the ``Manage..``
   and add a new Debugger. You can find the debugger path with command ``which $GDB``.
   Please note that the terminal should be ``source``\d beforehand.
+
 .. image:: screenshots/sdk_gdb.png
 * Choose CMake Tool, if it is not listed in the dropdown menu click the ``Manage..``
   button and add the path to CMake. You can find the path to Cmake with ``which cmake``.
   Please note that the terminal should be ``source``\d beforehand.
+
 .. image:: screenshots/sdk_cmake.png
 * If you are working with qmake then it should be added as well. You can find
   the path to qmake with ``which qmake``. Please note that the terminal should be
@@ -63,3 +68,5 @@ How to open the template service project with QtCreator
 * Here you should select the kit to use to build project
 * Select the kit you have already created in the previous step and click ``Configure``
 
+
+.. tags:: howto
