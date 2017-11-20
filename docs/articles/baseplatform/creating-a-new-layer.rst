@@ -180,5 +180,20 @@ and
 This can save you some later pain if the code gets moved to a new server, because in this way you
 won't need to modify all the recipes.
 
+Optionally depending on other layers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In some cases a layer might have recipes optional dependencies on other layers. For instance, one
+might want to append on a recipe for a Qt application which will only be built for some Qt specific
+image. Adding the recipe directly to the layer will cause bitbake to generate errors about dangling
+appends when building non-Qt images, which would not include any Qt layers. To mitigate this, create
+a ``layers`` directory containing directories named after the layers that is required, ``qt5`` in the
+Qt application example. Then add all ``.bb`` and ``.bbappend`` files needed to that layer. Finally in
+``conf/layer.conf`` make sure that the ``.bb`` and ``.bbappend`` files in under ``layers/<layer-dependency>/``
+are only included in ``BBPATH`` if the dependency is resolved, i.e. the layer is presant. An example
+of this can be found in meta-bistro_ (see ``conf/layer.conf``).
+
+.. _meta-bistro: https://github.com/Pelagicore/meta-bistro
+
 .. [#bbmanual] http://www.yoctoproject.org/docs/latest/bitbake-user-manual/bitbake-user-manual.html
 .. [#templateconf] http://www.yoctoproject.org/docs/latest/dev-manual/dev-manual.html#creating-a-custom-template-configuration-directory
