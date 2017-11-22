@@ -13,6 +13,7 @@ provisioning the VM.
 Starting the SDE
 ----------------
 Dependencies:
+
 * Vagrant
 * VirtualBox
 
@@ -34,7 +35,7 @@ Following is a list of environment variables used by vagrant when provisioning
 the SDE.
 
 * SDK_FILE_NAME: Name of the self-extracting SDK package to install into the
-SDE. Can include wildcards. Defaults to `oecore*toolchain*sh`.
+  SDE. Can include wildcards. Defaults to `oecore*toolchain*sh`.
 * NO_GUI: Will create a headless SDE when set.
 
 
@@ -48,15 +49,17 @@ while developing new features for the PELUX SDE. All tests are located in the
 test directory and are run through pytest.
 
 Dependencies:
+
 * pytest
 
 To run the test framework, run the following command in the root directory:
+
 .. code-block:: bash
 
     test/run-tests.sh
 
 .. note:: In order to do clean tests, this script will tear down and destroy
-   the VM if it is already create
+   the VM if it is already created
 
 Stubbed SDK
 ^^^^^^^^^^^
@@ -70,3 +73,4 @@ set all environment variables and provide fake installations of all tools
 installed by a real SDK. Therefore when developing new features for the SDE, it
 is likely necessary to extend the stubbed SDK with more environment variables or
 stubbed instances of tools.
+
