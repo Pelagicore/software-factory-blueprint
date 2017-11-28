@@ -33,14 +33,14 @@ Systemd service file running Docker container with FOSSology:
    Description=Fossology Container
    After=docker.service
    Requires=docker.service
-   
+
    [Service]
    TimeoutStartSec=0
    Restart=always
    ExecStartPre=-/usr/bin/docker stop %n
    ExecStartPre=-/usr/bin/docker rm %n
    ExecStart=/usr/bin/docker run -p 8081:80 fossology/fossology
-   
+
    [Install]
    WantedBy=multi-user.target
 
@@ -49,6 +49,9 @@ Using FOSSology
 ---------------
 
 Once Docker container up and running, it can be used using http://IP_ADDRESS:8081/repo
+
+It is possible to change the end of the URL, by accessing the docker image, and
+editing `/etc/apache2/conf-enabled/fossology.conf`
 
 User 'fossy'
 Password 'fossy'
