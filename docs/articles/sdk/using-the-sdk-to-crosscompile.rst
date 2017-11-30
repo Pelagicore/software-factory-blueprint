@@ -9,7 +9,7 @@ some more pitfalls, but let's get on with the happy cases for now.
 .. _sourcing-the-environment:
 
 Sourcing The Environment
---------------------
+------------------------
 
 After the installation the SDK it needs to be sourced. This means that the SDK toolchain and the
 sysroot environment variables will be set in your active terminal session.
