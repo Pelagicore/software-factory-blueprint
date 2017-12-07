@@ -7,6 +7,7 @@ Revision: |release|
     :maxdepth: 3
 
     articles/intro/index.rst
+    articles/intro/how-to-use-the-swf-platform-blueprint.rst
 
     articles/baseplatform/index.rst
 

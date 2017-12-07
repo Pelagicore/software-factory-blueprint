@@ -3,61 +3,30 @@
 Introduction
 ************
 
-This is the Software Factory Blueprint.
+The Software Factory (SWF) concept is intended to be used as a structured way
+to set up a platform, and be a handbook for the work involved in the
+development of that platform. Part of this concept is to enable a project to
+start creating and populating it's own SWF - a handbook specific to the needs
+of the project.
 
-How to use the blueprint
-========================
-The blueprint is not intended to be particularly useful on its own, rather it is a collection of
-generic descriptions, processes, how-tos et cetera.
+The project SWF starts with initial and basic content, at the same time as the
+platform is in an initial basic state, and then evolves into a project specific
+SWF as the platform evolves as well. This evolution is expected to correlate
+with the maturity and progress of the project. In essence this means the SWF
+intends to quickly start a project's development of a platform and also guide
+the project into maturity.
 
-The typical user of the blueprint is someone who wants to run a project where a Software Factory is
-part of the project. The blueprint can then be used as a base and then be extended with
-project-specific info, or one can just pick and choose the relevant parts from the blueprint.
+To understand the details and structure more in-depth, please consult
+:ref:`structure-and-nomenclature`
 
-We recommend using the blueprint in a project-specific setting as a *git submodule* from whichever
-git contains the project-specific Software Factory. Our reference deployment `PELUX Baseline SWF
-Deployment`_ does exactly that.
+To understand how to read and use the SWF Platform Blueprint, please consult
+:ref:`how-to-use-the-swf-platform-blueprint`.
 
-.. code-block:: bash
+To create a SWF for your project, see :ref:`create-a-swf-deployment`.
 
-    pelux-software-factory
-    ├── CMakeLists.txt
-    ├── CONTRIBUTING.md
-    ├── docs
-    │   ├── chapters
-    │   │   ├── baseplatform
-    │   │   ├── ci-and-cd
-    │   │   ├── intro
-    │   │   ├── licensing
-    │   │   ├── sdk
-    │   │   └── workflow
-    │   ├── CMakeLists.txt
-    │   ├── cmake_modules
-    │   │   └── FindSphinx.cmake
-    │   ├── conf.py.in
-    │   ├── index.rst
-    │   ├── swf-blueprint
-    │   │   ├── CMakeLists.txt
-    │   │   ├── CONTRIBUTING.md
-    │   │   ├── docs
-    │   │   │   ├── articles
-    │   │   │   ├── CMakeLists.txt
-    │   │   │   ├── cmake_modules
-    │   │   │   ├── conf.py.in
-    │   │   │   ├── index.rst
-    │   │   │   ├── python_modules
-    │   │   │   └── swf-substitutions.txt
-    │   │   ├── LICENSE
-    │   │   └── README.md
-    │   └── swf-substitutions.txt
-    ├── Jenkinsfile
-    ├── LICENSE
-    ├── README.md
-    └── scripts
-        └── publish_docs.sh
+.. toctree::
+    :hidden:
 
+    structure-and-nomenclature
 
-Note that in the above file structure, the ``swf-blueprint`` is a git submodule that points to the
-blueprint repository from the PELUX software factory repository.
-
-.. _`Pelux Baseline SWF Deployment`: http://github.com/Pelagicore/software-factory/
+.. tags:: process
