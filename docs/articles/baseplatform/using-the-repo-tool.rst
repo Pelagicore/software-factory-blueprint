@@ -20,7 +20,7 @@ choice) to your ``$PATH``:
 
     mkdir ~/bin
     echo "export PATH=~/bin/:$PATH" >> ~/.bashrc
-    bash # needed to reload the ~/.bashrc
+    source ~/.bashrc # needed to reload the ~/.bashrc
 
 .. note:: You need to replace ``~/.bashrc`` with the correct rc-file for your shell.
 
