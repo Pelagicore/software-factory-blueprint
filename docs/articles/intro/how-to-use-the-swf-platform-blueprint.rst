@@ -1,3 +1,5 @@
+:orphan:
+
 .. _how-to-use-the-swf-platform-blueprint:
 
 How to use the SWF Platform Blueprint
