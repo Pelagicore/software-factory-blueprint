@@ -49,16 +49,18 @@ Configure and build from the git top dir like so:
 After a successfull build you can find the documentation in `build/docs/html/`
 if you open the `index.html` in your browser you will see the entry point.
 
+## Structure
 The project is intended to be used as a submodule in another project, in
 which case that project should take care of configuring, building, generating,
 etc. If the cmake file in this project is not the one invoked explicitly,
-i.e. it is not the top level project cmake file, nothing will happen. This
+e.g. when it is not the top level project cmake file, nothing will happen. This
 is to make sure this project does not interfere with the using project.
 
-And because of the fact how Sphinx creates toctrees in sidebars all the files
-which contain a toctree need to have the suffix `.trst` instead of just `.rst`.
-This way the projects which use this as a submodule are able to ignore the
-toctrees and build their own instead.
+In order to not interfere with how the sidebar toctree is constructued in a
+project using this as a submodule, all files in this repo that contain a
+toctree need to have the suffix `.trst` instead of just `.rst`. This project
+is configured to include `.trst` files while projects using this as a
+submodule should ignore that suffix.
 
 # License and Copyright
 Copyright (C) Pelagicore AB 2017
