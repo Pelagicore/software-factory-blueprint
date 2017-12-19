@@ -1,5 +1,7 @@
 :orphan:
 
+.. _setting-up-yocto-cache:
+
 Setting up and using a Yocto cache
 ==================================
 
