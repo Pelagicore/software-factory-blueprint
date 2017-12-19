@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This file is part of the Software Factory Blueprint project
-# Copyright (C) Pelagicore AB
+# Copyright (C) Pelagicore AB 2017
 # SPDX-License_identifier: LGPL-2.1
 # This file is subject to the terms of the LGPL-2.1 license.
 # Please see the LICENSE file for details.
