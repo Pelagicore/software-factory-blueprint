@@ -47,7 +47,7 @@ Configure and build from the git top dir like so:
     cd build
     make
 
-After a successfull build you can find the documentation in `build/docs/html/`
+After a successful build you can find the documentation in `build/docs/html/`
 if you open the `index.html` in your browser you will see the entry point.
 
 ## Structure
@@ -57,7 +57,7 @@ etc. If the cmake file in this project is not the one invoked explicitly,
 e.g. when it is not the top level project cmake file, nothing will happen. This
 is to make sure this project does not interfere with the using project.
 
-In order to not interfere with how the sidebar toctree is constructued in a
+In order to not interfere with how the sidebar toctree is constructed in a
 project using this as a submodule, all files in this repo that contain a
 toctree need to have the suffix `.trst` instead of just `.rst`. This project
 is configured to include `.trst` files while projects using this as a
