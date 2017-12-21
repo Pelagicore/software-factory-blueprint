@@ -9,10 +9,10 @@ needs to be one host server which will work as a proxy server to give easy
 access to all the applications in the infrastructure in a easy way. It might
 also be responsible to serve static files like documentation and cache.
 
-Host Nginx configuration
+Host nginx configuration
 ------------------------
 
-This is a example Nginx configuration which can be reused to set up a proxy server host:
+This is a example nginx configuration which can be reused to set up a proxy server host:
 
 .. code-block:: none
 

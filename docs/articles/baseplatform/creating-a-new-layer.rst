@@ -154,7 +154,7 @@ See the target integration section in :ref:`yocto-project-integration`
 
 Suggested practices
 -------------------
-What follows is a set of practical advices which help maintaining your own layer.
+What follows is a set of practical advice which help maintaining your own layer.
 
 Using a variable for the ``SRC_URI`` base
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -190,7 +190,7 @@ appends when building non-Qt images, which would not include any Qt layers. To m
 a ``layers`` directory containing directories named after the layers that is required, ``qt5`` in the
 Qt application example. Then add all ``.bb`` and ``.bbappend`` files needed to that layer. Finally in
 ``conf/layer.conf`` make sure that the ``.bb`` and ``.bbappend`` files in under ``layers/<layer-dependency>/``
-are only included in ``BBPATH`` if the dependency is resolved, i.e. the layer is presant. An example
+are only included in ``BBPATH`` if the dependency is resolved, i.e. the layer is present. An example
 of this can be found in meta-bistro_ (see ``conf/layer.conf``).
 
 .. _meta-bistro: https://github.com/Pelagicore/meta-bistro

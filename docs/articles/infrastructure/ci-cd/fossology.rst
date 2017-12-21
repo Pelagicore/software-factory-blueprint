@@ -5,7 +5,7 @@ FOSSology
 
 FOSSology is a open source license compliance software system and toolkit.
 As a toolkit you can run license, copyright and export control scans from
-the command line. As a system, a database and web ui are provided to give
+the command line. As a system, a database and web UI are provided to give
 you a compliance workflow. License, copyright and export scanners are
 tools available to help with your compliance activities.
 

@@ -5,7 +5,7 @@ The template library provides an example CMake_ shared library project for
 service developers.
 
 To acquire the template service source code the user needs to fetch the
-code from github.
+code from GitHub.
 
 .. code-block:: bash
 
@@ -33,7 +33,7 @@ developers that should be used as a starting point while creating platform
 services.
 
 To acquire the template service source code the user needs to fetch the
-code from github.
+code from GitHub.
 
 .. code-block:: bash
 

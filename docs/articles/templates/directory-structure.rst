@@ -6,7 +6,7 @@ should follow a common directory structure. The tree structure below
 shows a repository with two components sharing a 'doc' directory and
 'component-test' directory. Many repos will likely contain only one
 component, in which case the structure should be the same but with only
-one subdirectory with the source code etc.
+one sub-directory with the source code etc.
 
 .. code-block:: bash
 
@@ -45,10 +45,10 @@ Directory                              Description
 ====================================== ===========
 scripts                                Contains e.g. utility scripts that might be needed to e.g. set up an environment or such like.
 cmake_modules                          Contains any CMake 'find' modules.
-doc                                    Contains doxygen files for generating reference documentation that is not part of any class
+doc                                    Contains Doxygen files for generating reference documentation that is not part of any class
                                        etc, e.g. introductory pages and topic overviews. Contains design.md, describing the design
                                        of the component in an arc42 structure.
-doc/images                             Contains images for the design and doxygen documentation.
+doc/images                             Contains images for the design and Doxygen documentation.
                                        The preferred file format is png. If the image is generated from another document, it is
                                        recommended to keep that document here as well, e.g. a UML model.
 component-test                         Contains tests and any stubs used in component tests.
@@ -72,7 +72,7 @@ README(.md)     A top-level README giving a brief introduction to the repository
                 The .md suffix for markdown syntax may be used.
 LICENSE         The source code and project license.
 DEPENDENCIES    Describes any non-trivial dependency used by a component.
-                Typically a library linked against such as libfoo would be listed while a compiler and libstdc++ would not be listed.
+                Typically a library linked against such as ``libfoo`` would be listed while a compiler and libstdc++ would not be listed.
 CONTRIBUTING.md For OSS projects this file should exist and contain the following information:
                     * How and where to file bug reports and what information is expected in them.
                     * How the development flow works, for instance forks and merge requests.
@@ -100,4 +100,4 @@ test, e.g. a unit with the name 'mymodule.cpp'/'mymodule.h' would have a
 corresponding unit test implemented in a file named
 'mymodule_unittest.cpp'.
 
-.. note:: The repository meta data files such as the readme, license and makefiles are allowed to use upper case letters in their naming.
+.. note:: The repository meta data files such as the README, license and Makefiles are allowed to use upper case letters in their naming.

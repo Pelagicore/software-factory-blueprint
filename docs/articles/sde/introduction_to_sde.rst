@@ -44,7 +44,7 @@ Developing and Extending the SDE
 
 Test framework
 ^^^^^^^^^^^^^^
-The test framework is used to ensure that no existing functionallity is broken
+The test framework is used to ensure that no existing functionality is broken
 while developing new features for the PELUX SDE. All tests are located in the
 test directory and are run through pytest.
 

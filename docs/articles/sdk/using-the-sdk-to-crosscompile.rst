@@ -35,7 +35,7 @@ Cross Compiling
 ---------------
 
 In the easiest case, when all the projects dependencies are already installed in the SDK,
-crosscompiling is really easy. Navigate in to the directory and use cmake and make to compile it as
+cross-compiling is really easy. Navigate in to the directory and use cmake and make to compile it as
 you normally would. The environment will make sure that the right compiler and cmake will be used.
 
 In the case of additional external dependencies, it's recommended to install them into the SDK so

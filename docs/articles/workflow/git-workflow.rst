@@ -4,7 +4,7 @@ Git workflow
 ************
 
 The suggested workflow when working in a somewhat large project with git, given that one does not
-use gerrit or a similar tool, is a rather general pull request based flow. The following flow is
+use Gerrit or a similar tool, is a rather general pull request based flow. The following flow is
 general enough so that it works in both GitHub, GitLab and Bitbucket, at least.
 
 Assume in the examples below that the URL to the repo is

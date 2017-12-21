@@ -14,7 +14,7 @@ usually up to 50% faster.
 
 Specifically, we will be talking about the ``downloads`` directory and the
 ``sstate-cache`` directory in this chapter. The ``downloads`` directory contains
-all downloaded packages, including those downloaded over svn or git or similar,
+all downloaded packages, including those downloaded over SVN or git or similar,
 and ``sstate-cache`` contains everything that was built, so basically binaries
 plus some meta-data stating that it has actually been built and what version and
 so on. One reason why the meta-data is useful is because otherwise the system

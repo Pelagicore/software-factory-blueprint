@@ -38,13 +38,13 @@ setup to QtCreator.
   ``source``\d beforehand.
 * Copy the environment list of the SDK to ``Environment``. You can find the environment
   list by typing ``env`` to the terminal.
-* Choose ``Debugger``, if it is not listed in the dropdown menu click the ``Manage..``
+* Choose ``Debugger``, if it is not listed in the drop down menu click the ``Manage..``
   and add a new Debugger. You can find the debugger path with command ``which $GDB``.
   Please note that the terminal should be ``source``\d beforehand.
 
 .. image:: screenshots/sdk_gdb.png
 
-* Choose CMake Tool, if it is not listed in the dropdown menu click the ``Manage..``
+* Choose CMake Tool, if it is not listed in the drop down menu click the ``Manage..``
   button and add the path to CMake. You can find the path to Cmake with ``which cmake``.
   Please note that the terminal should be ``source``\d beforehand.
 

@@ -10,7 +10,7 @@ In order to run a slave which the master can reach via SSH you still need to pre
 
 .. code-block:: bash
 
-   # Install prerequesits
+   # Install prerequisites
    sudo apt install openjdk-8-jdk-headless docker.io vagrant
 
    # create a jenkins user and add it to the docker group so
@@ -25,12 +25,12 @@ In order to run a slave which the master can reach via SSH you still need to pre
 Connecting to the slave using SSH
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Generating SSH keypairs
-"""""""""""""""""""""""
+Generating SSH key pairs
+""""""""""""""""""""""""
 
-A private and public SSH keypair must be generated. The Jenkins master server will connect to the Jenkins build slaves using SSH. The Jenkins master server will have the SSH *private* key, in order to initiate the SSH connection, and the Jenkins build slaves will have *public* keys added to their respective ``jenkins`` users.
+A private and public SSH key pair must be generated. The Jenkins master server will connect to the Jenkins build slaves using SSH. The Jenkins master server will have the SSH *private* key, in order to initiate the SSH connection, and the Jenkins build slaves will have *public* keys added to their respective ``jenkins`` users.
 
-Generate one keypair per build slave using the following command:
+Generate one key pair per build slave using the following command:
 
 .. code-block:: bash
 
@@ -74,7 +74,7 @@ Prerequisites
 
 You need to have the same Java version running on the slave as your Jenkins master runs. Nowadays the docker LTS version runs Java 8.
 
-Best practice is also to create a unix user the slave will run with on your machine, you can call the user jenkins. If you will run Docker, make sure this user is in the ``docker`` group.
+Best practice is also to create a UNIX user the slave will run with on your machine, you can call the user jenkins. If you will run Docker, make sure this user is in the ``docker`` group.
 
 How to setup and install
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -97,7 +97,7 @@ Replace <URL> in the file with the real URL to the Jenkins server.
 1. Go to Jenkins -> Manage Jenkins -> Nodes -> New Node
 2. Add the node name and set "Permanent Agent"
 3. Put in the name and the remote root directory, you should have a special user like ``jenkins`` to run it so set ``/home/jenkins/``
-4. Set the lables which this slave can run, for example ``DockerCI``
+4. Set the labels which this slave can run, for example ``DockerCI``
 5. Have the Launch method set to Launch agent via Java Web Start
 6. Save
 7. Click on that slave in the list to get to the online/offline view of it

@@ -28,7 +28,7 @@ When doing yocto builds, the repo tool is useful to have the various yocto
 layers synced towards the same yocto release (typically, a poky release).
 
 Revisions in repo manifests can be branch names, tags, or commit hashes. For
-maximum reproducability, commit hashes are a good solution, but in order to be
+maximum reproducibility, commit hashes are a good solution, but in order to be
 able to follow layers as they move, branch names are suitable.
 
 If one wants to support several yocto releases, it is possible to use different

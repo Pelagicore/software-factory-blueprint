@@ -11,7 +11,7 @@ Create a git repo for the SWF Deployment
 ========================================
 
 To create a new SWF Deployment, you first need to create a new repository
-on your project git server and call it something meaningfull, most
+on your project git server and call it something meaningful, most
 probably with the name of the project in it like: "example-software-factory".
 
 .. code-block:: bash
@@ -29,7 +29,7 @@ Add SWF Platform Blueprint as submodule
 =======================================
 
 The blueprint contains a lot of articles of general nature, those can be
-used to prepopulate the SWF Deployment. To do that the SWF Platform
+used to pre-populate the SWF Deployment. To do that the SWF Platform
 Blueprint needs to be added as a git submodule.
 
 .. code-block:: bash
@@ -45,7 +45,7 @@ the SWF-Blueprint code out there. By adding and committing this, the
 checked out version (in this case head of the master branch of the
 SWF-blueprint) will be used.
 
-Next time when cloning, it will need an aditional step like this:
+Next time when cloning, it will need an additional step like this:
 
 .. code-block:: bash
 
@@ -55,7 +55,7 @@ Create skeletal index file
 ==========================
 
 One file which needs special attention is the docs/index.rst file, which
-is the entry point of the new SWD Deployment.
+is the entry point of the new SWF Deployment.
 
 .. code-block:: rst
 
@@ -83,7 +83,7 @@ Set variables and "substitutions"
 =================================
 
 Throughout the SWF Blueprint sometimes words and variables are used
-which need to be substituded with something else in the SWF Deployment.
+which need to be substituted with something else in the SWF Deployment.
 To be able to use this functionality those variables need to be defined
 in the docs/swf-substitutions.txt file:
 
