@@ -3,11 +3,14 @@ Software Factory Blueprint
 Revision: |release|
 
 .. toctree::
-    :caption: Table of contents:
+    :caption: About
     :maxdepth: 3
 
     articles/intro/index.rst
-    articles/intro/how-to-use-the-swf-platform-blueprint.rst
+
+.. toctree::
+    :caption: Table of contents:
+    :maxdepth: 3
 
     articles/baseplatform/index.rst
 
