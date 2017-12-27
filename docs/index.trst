@@ -21,6 +21,8 @@ Revision: |release|
 
     articles/workflow/git-workflow.rst
 
+    articles/architecture/index.rst
+
 .. toctree::
     :caption: Categories:
     :maxdepth: 1
