@@ -21,6 +21,8 @@ Reader's Guide
 
 - The :ref:`arch-concepts` chapter discusses concepts and associated
   guidelines.
+- The :ref:`arch-template` is a base document used for creating 
+  component and subsystem architecture documentation.
 - The :ref:`arch-glossary` clarifies terms and abbreviations.
 
 .. _`arc42`: <http://arc42.org>
