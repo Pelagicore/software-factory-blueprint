@@ -24,7 +24,7 @@ Revision: |release|
 
     articles/workflow/git-workflow.rst
 
-    articles/architecture/index.rst
+    articles/architecture/arch-intro.rst
 
 .. toctree::
     :caption: Categories:
