@@ -2,12 +2,12 @@
 
 .. _arch-vertical-configurations:
 
-Vertical Configurations
+Vertical configurations
 ***********************
 
 Each vertical configuration describes a sub-system of the product.
 
-Update Management
+Update management
 =================
 
 The software update components are responsible for platform level software update.

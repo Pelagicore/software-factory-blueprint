@@ -2,7 +2,7 @@
 
 .. _arch-intro:
 
-Introduction and Goals
+Introduction and goals
 ======================
 
 The goals of the architecture documentation can be summarized as
@@ -16,7 +16,7 @@ follows:
 This documentation is loosely based on the `arc42`_ document
 template.
 
-Reader's Guide
+Reader's guide
 --------------
 
 - The :ref:`arch-concepts` chapter discusses concepts and associated

@@ -18,19 +18,19 @@ Template Revision: 7.0 EN (based on asciidoc), January 2017
 architecture template, <http://www.arc42.de>. Created by Dr. Peter
 Hruschka & Dr. Gernot Starke.
 
-Introduction and Goals
+Introduction and goals
 ----------------------
 
-Requirements Overview
+Requirements overview
 ^^^^^^^^^^^^^^^^^^^^^
 
-Basic Usage
+Basic usage
 """""""""""
 
-Basic Requirements
+Basic requirements
 """"""""""""""""""
 
-Quality Goals
+Quality goals
 ^^^^^^^^^^^^^
 
 Stakeholders
@@ -39,41 +39,41 @@ Stakeholders
 Constraints
 -----------
 
-System Scope and Context
+System scope and context
 ------------------------
 
-Business Context
+Business context
 ^^^^^^^^^^^^^^^^
 
-Technical Context
+Technical context
 ^^^^^^^^^^^^^^^^^
 
-Solution Strategy
+Solution strategy
 -----------------
 
-Building Blocks View
+Building blocks view
 --------------------
 
-Runtime View
+Runtime view
 ------------
 
-Deployment View
+Deployment view
 ---------------
 
 Cross-cutting concepts
 ----------------------
 
-Design Decisions
+Design decisions
 ----------------
 
-Quality Requirements
+Quality requirements
 --------------------
 
-Risks and Technical Debts
+Risks and technical debts
 -------------------------
 
 Glossary
 --------
 
-Appendix: Case Studies
+Appendix: case studies
 -----------------------
