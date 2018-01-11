@@ -17,11 +17,11 @@ Use `scp` to copy your binary to the target.
 
 .. code-block:: bash
 
-    scp build/|example-sdk-binary| root@<ip address>:
+    scp build/example-binary root@<ip address>:
 
 Now that the binary file has been copied to the target it can be run there.
 
 .. code-block:: bash
 
     ssh root@<ip address>
-    ./|example-sdk-binary|
+    ./example-binary

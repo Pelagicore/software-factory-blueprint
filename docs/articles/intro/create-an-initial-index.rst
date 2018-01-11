@@ -5,7 +5,7 @@ Create an initial index
 
 The actual structure of the documentation might be quite different of the file
 structure of the restructured text files. To set up a useful structure the
-docs/index.rst file is used, which in it self points to articles and deeper
+``docs/index.rst`` file is used, which in it self points to articles and deeper
 index files for chapters, etc. This file makes it also possible to reuse the
 content from the SWF Blueprint. Let's look at a example implementation:
 
@@ -14,7 +14,7 @@ content from the SWF Blueprint. Let's look at a example implementation:
     .. toctree::
       :caption: Table of contents
       :maxdepth: 3
- 
+
       chapters/example/index
       swf-blueprint/docs/articles/licensing/index
 

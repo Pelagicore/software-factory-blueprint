@@ -10,7 +10,8 @@ To understand some of the content in this page, please refer to
 The first thing that needs to be done within a project is for the
 project to create it's own project specific SWF. This is done by
 creating a Deployment that extends the Blueprint with more content
-and also additional project specific content see :ref:`create-a-swf-deployment`.
+and also additional project specific content, see
+:ref:`create-a-swf-deployment`.
 
 For the SWF Deployment to be a suitable project SWF, the structure and
 order of the articles need to be set in a suitable way. This is done

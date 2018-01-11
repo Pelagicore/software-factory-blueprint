@@ -3,7 +3,7 @@
 Create a SWF deployment
 ***********************
 
-This howto describes how to practically go about creating a new instance
+This how-to describes how to practically go about creating a new instance
 of a software factory by configuring git, creating directories and
 indexes.
 
@@ -61,19 +61,19 @@ is the entry point of the new SWF Deployment.
 
     Welcome to the Example SWF documentation
     ****************************************
-    
+
     Revision: |release|
-    
+
     .. toctree::
         :caption: Table of contents
         :maxdepth: 3
-    
+
         chapters/example/index
-    
+
     .. toctree::
         :caption: Categories
         :maxdepth: 1
-    
+
         categories/howto.rst
 
 This is just a skeleton which needs to be populated with links to all
@@ -85,21 +85,21 @@ Set variables and "substitutions"
 Throughout the SWF Blueprint sometimes words and variables are used
 which need to be substituted with something else in the SWF Deployment.
 To be able to use this functionality those variables need to be defined
-in the docs/swf-substitutions.txt file:
+in the ``docs/swf-substitutions.txt`` file:
 
 .. code-block:: bash
 
     # Key=Value. Don't keep '=' in the value
     # Blank lines and lines starting with # are ignored
     # Example: proj_name=PELUX
-    
+
     proj_name=Example Software Factory
     example-sdk-binary=test-binary
 
 Add needed files
 ================
 
-Normally you only the files config.py and index.rst to create a Sphinx
+Normally you only the files ``config.py`` and ``index.rst`` to create a Sphinx
 documentation, but we recommend a file structure like this:
 
 .. code-block:: bash
