@@ -19,8 +19,6 @@ template.
 Reader's guide
 --------------
 
-- The :ref:`arch-concepts` chapter discusses concepts and associated
-  guidelines.
 - The :ref:`arch-vertical-configurations` chapter presents various vertical
   configuration or sub-systems in the product. 
 - The :ref:`arch-template` is a base document used for creating 
