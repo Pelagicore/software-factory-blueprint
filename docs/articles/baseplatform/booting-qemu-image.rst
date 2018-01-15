@@ -54,6 +54,7 @@ KVM option    Value           Description
 ============  ==============  ===========
 
 .. note:: The ``hostfwd`` option specifies TCP port configuration for ssh usage.
+.. note:: If you build another image than ``core-image-pelux-minimal``, adapt the path passed to ``-hda`` accordingly.
 
 Connecting to the virtual machine using SSH
 -------------------------------------------
