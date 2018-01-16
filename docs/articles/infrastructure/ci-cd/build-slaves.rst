@@ -6,20 +6,24 @@ Build Slaves
 Running a public slave
 ----------------------
 
-In order to run a slave which the master can reach via SSH you still need to prepare some things:
+In order to run a slave which the master can reach via SSH you still need to prepare some things. First install docker from `dockers own repositories`_. (The package in Ubuntus own repository is old and outdated):
+
+.. _dockers own repositories: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/
+
+Now install the other dependencies through apt and setup the jenkins user.
 
 .. code-block:: bash
 
    # Install prerequisites
-   sudo apt install openjdk-8-jdk-headless docker.io vagrant
+   sudo apt install openjdk-8-jdk-headless vagrant
 
    # create a jenkins user and add it to the docker group so
    # it can run docker without becoming root
-   sudo useradd jenkins
+   sudo useradd -m jenkins
    sudo usermod -aG docker jenkins
 
    # Configure docker to use overlay2 as storage driver
-   sudo echo "{ \"storage-driver\": \"overlay2\" }" > /etc/docker/daemon.json
+   sudo sh -c 'echo "{ \"storage-driver\": \"overlay2\" }" > /etc/docker/daemon.json'
 
 
 Connecting to the slave using SSH
@@ -33,10 +37,15 @@ A private and public SSH key pair must be generated. The Jenkins master server w
 Generate one key pair per build slave using the following command:
 
 .. code-block:: bash
+    
+    # Execute on the build slave
+    sudo su jenkins
+    cd $HOME
+    mkdir .ssh && chmod 700 .ssh & cd .ssh
+    ssh-keygen -t rsa -f build_slave_key
+    cat build_slave_key.pub >> authorized_keys
 
-    ssh-keygen -f build_slave_key
-
-Add the public key file (``build_slave_key.pub``) to ``/home/jenkins/.ssh/authorized_keys`` on your Jenkins *build slave* (or replace ``jenkins`` with the user you chose for your Jenkins build slave). Save the private key. It will be used when configuring Jenkins.
+Save the private key. It will be used when configuring Jenkins.
 
 Configuring Jenkins
 """""""""""""""""""
