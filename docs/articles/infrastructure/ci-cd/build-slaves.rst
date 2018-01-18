@@ -6,7 +6,11 @@ Build Slaves
 Running a public slave
 ----------------------
 
-In order to run a slave which the master can reach via SSH you still need to prepare some things. First install docker from `dockers own repositories`_. (The package in Ubuntus own repository is old and outdated):
+In order to run a slave which the master can reach via SSH you still need to
+prepare some things. 
+
+First install docker from `dockers own repositories`_. (The package in Ubuntu,
+for example, is old and outdated):
 
 .. _dockers own repositories: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/
 
@@ -14,6 +18,7 @@ Now install the other dependencies through apt and setup the jenkins user.
 
 .. code-block:: bash
 
+   # Instructions for Ubuntu
    # Install prerequisites
    sudo apt install openjdk-8-jdk-headless vagrant
 
@@ -25,6 +30,26 @@ Now install the other dependencies through apt and setup the jenkins user.
    # Configure docker to use overlay2 as storage driver
    sudo sh -c 'echo "{ \"storage-driver\": \"overlay2\" }" > /etc/docker/daemon.json'
 
+There is currently a bug in the kernel of Ubuntu 16.04 which under certain
+circumstances causes ``tar -x`` to fail on overlayfs with something like:
+
+.. code-block:: none
+
+  tar: ./deps/0/bin: Directory renamed before its status could be extracted
+
+This can affect yocto builds inside of Vagrant. More information is available
+in `the bug report`_. In short, this bug was fixed in the linux package for
+Xenial (16.04) as of version 4.4.0-103.126. Install the patched kernel:
+
+.. code-block:: bash
+
+  # Installed the latest kernel patches for 16.04
+  sudo apt-get install linux-generic
+
+  # Reboot to use the updated kernel
+  sudo reboot
+
+.. _the bug report: https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1728489
 
 Connecting to the slave using SSH
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
