@@ -25,13 +25,13 @@ Launching the virtual machine
 -----------------------------
 
 QEMU emulator can be launched with a serial console support using the
-following command: 
+following command:
 
-.. code-block:: bash   
+.. code-block:: bash
 
    sudo kvm -kernel tmp/deploy/images/qemux86-64/bzImage \
       -net nic \
-      -net user,hostfwd=tcp::1234-:22 \ 
+      -net user,hostfwd=tcp::1234-:22 \
       -cpu Broadwell \
       -smp 4 \
       -hda tmp/deploy/images/qemux86-64/core-image-pelux-minimal-qemux86-64.ext4 \
