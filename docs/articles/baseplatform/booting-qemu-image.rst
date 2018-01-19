@@ -1,5 +1,7 @@
 :orphan:
 
+.. _booting-a-qemu-image:
+
 Booting up a QEMU image
 =======================
 
