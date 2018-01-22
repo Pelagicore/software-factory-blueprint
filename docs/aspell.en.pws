@@ -288,3 +288,10 @@ cetera
 deps
 overlayfs
 Xenial
+googlemock
+googletest
+AddGMock
+AddGTestTest
+subproject
+gmock
+gtest
