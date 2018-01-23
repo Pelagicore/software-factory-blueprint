@@ -11,6 +11,15 @@ tools available to help with your compliance activities.
 
 This mini-tutorial explains how to use FOSSology together with PELUX.
 
+nginx configuration
+-------------------
+
+.. code-block:: none
+
+    location ^~ /fossology/ {
+        proxy_pass http://127.0.0.1:8084/fossology/;
+    }
+
 systemd service
 ---------------
 
@@ -44,6 +53,11 @@ Systemd service file running Docker container with FOSSology:
    [Install]
    WantedBy=multi-user.target
 
+Changing the URL
+----------------
+The default is http://IP_ADDRESS:8081/repo, but the `/repo` part can be changed
+by editing `/etc/apache2/conf-enabled/fossology.conf` inside the Docker
+container that runs fossology.
 
 Using FOSSology
 ---------------
