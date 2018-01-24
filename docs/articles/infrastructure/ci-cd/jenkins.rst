@@ -29,7 +29,49 @@ The Jenkins project offers preinstalled Docker images which can be used to vastl
    WantedBy=multi-user.target
 
 This runs Jenkins and mounts ``/var/www`` into the Jenkins container at the same place which makes it possible for Jenkins to store some artifacts in a place where a http server can reach them and serve them.
-   
+
+nginx configuration
+-------------------
+.. code-block:: none
+
+    # Nginx configuration specific to Jenkins
+    # Note that regex takes precedence, so use of "^~" ensures earlier evaluation
+    location ^~ /jenkins/ {
+
+        # Convert inbound WAN requests for https://domain.tld/jenkins/ to
+        # local network requests for http://127.0.0.1:8080/jenkins/
+        proxy_pass http://127.0.0.1:8080/jenkins/;
+
+        # Rewrite HTTPS requests from WAN to HTTP requests on LAN
+        # proxy_redirect http:// https://;
+
+        # The following settings from https://wiki.jenkins-ci.org/display/JENKINS/Running+Hudson+behind+Nginx
+        sendfile off;
+
+        proxy_set_header   Host             $host:$server_port;
+        proxy_set_header   X-Real-IP        $remote_addr;
+        proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+        proxy_max_temp_file_size 0;
+
+        # this is the maximum upload size
+        client_max_body_size       10m;
+        client_body_buffer_size    128k;
+
+        proxy_connect_timeout      90;
+        proxy_send_timeout         90;
+        proxy_read_timeout         90;
+
+        proxy_buffer_size          4k;
+        proxy_buffers              4 32k;
+        proxy_busy_buffers_size    64k;
+        proxy_temp_file_write_size 64k;
+
+        # Required for new HTTP-based CLI
+        proxy_http_version 1.1;
+        proxy_request_buffering off;
+    }
+
+
 Usage
 -----
 First, install docker according to the installation instructions for your distribution. These instructions are available in the Docker website [#dockerinstall]_.

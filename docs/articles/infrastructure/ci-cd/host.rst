@@ -34,17 +34,20 @@ This is a example nginx configuration which can be reused to set up a proxy serv
             listen       80;
             server_name  localhost pelux.io;
 
+            # Just the general site
             location / {
                 root   /var/www/pelux.io;
                 index  index.html index.htm;
             }
 
+            # When using yocto-cache over www
             location /yocto-cache/ {
                 alias     /var/www/yocto-cache/archive/;
                 index     index.html index.htm;
                 autoindex on;
             }
 
+            # Documentation
             location /software-factory/ {
                 alias /var/www/software-factory/
                 index index.html index.htm
@@ -54,44 +57,21 @@ This is a example nginx configuration which can be reused to set up a proxy serv
             location = /50x.html {
                 root   /usr/share/nginx/html;
             }
-
-            # Nginx configuration specific to Jenkins
-            # Note that regex takes precedence, so use of "^~" ensures earlier evaluation
-            location ^~ /jenkins/ {
-
-                # Convert inbound WAN requests for https://domain.tld/jenkins/ to
-                # local network requests for http://127.0.0.1:8080/jenkins/
-                proxy_pass http://127.0.0.1:8080/jenkins/;
-
-                # Rewrite HTTPS requests from WAN to HTTP requests on LAN
-                # proxy_redirect http:// https://;
-
-                # The following settings from https://wiki.jenkins-ci.org/display/JENKINS/Running+Hudson+behind+Nginx
-                sendfile off;
-
-                proxy_set_header   Host             $host:$server_port;
-                proxy_set_header   X-Real-IP        $remote_addr;
-                proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
-                proxy_max_temp_file_size 0;
-
-                # this is the maximum upload size
-                client_max_body_size       10m;
-                client_body_buffer_size    128k;
-
-                proxy_connect_timeout      90;
-                proxy_send_timeout         90;
-                proxy_read_timeout         90;
-
-                proxy_buffer_size          4k;
-                proxy_buffers              4 32k;
-                proxy_busy_buffers_size    64k;
-                proxy_temp_file_write_size 64k;
-
-                # Required for new HTTP-based CLI
-                proxy_http_version 1.1;
-                proxy_request_buffering off;
-            }
         }
     }
 
-The Jenkins jobs later need to be directed to write the yocto-cache and other artifacts to ``/var/www/`` so that this Nginx instance will be able to serve them via http(s).
+The Jenkins jobs later need to be directed to write the yocto-cache and other
+artifacts to ``/var/www/`` so that this Nginx instance will be able to serve
+them via http(s).
+
+Host docker configuration
+-------------------------
+Make sure to create a docker config file to make sure the file systems are large
+enough and work as intended. Make sure ``/etc/docker/daemon.json`` contains at
+least the following.
+
+.. code-block:: json
+
+    {
+      "storage-driver": "overlay2"
+    }
