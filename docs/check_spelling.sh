@@ -86,6 +86,7 @@ function spell_check() {
         fi
     done
     if [ "$mode" == "onebyone" ]; then
+        sort_project_dict
         cleanup 0
     fi
     if [ -z "$misspelled_wordlist" ]; then
@@ -98,6 +99,7 @@ function spell_check() {
     else
         if [ "$mode" == "all" ]; then
             add_words_dict
+            sort_project_dict
         fi
         cleanup 1
     fi
@@ -186,6 +188,12 @@ function add_words_manual() {
         done
     done
 }
+
+# Sort the project_dict file so it's easier to diff
+function sort_project_dict() {
+    { head -n1 "$project_dict"; tail -n+2 "$project_dict" | sort -u; } >file.tmp && mv file.tmp "$project_dict"
+}
+
 
 # Print exit message and terminate with appropriate error code
 function cleanup() {
