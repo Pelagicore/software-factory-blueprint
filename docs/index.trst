@@ -20,6 +20,8 @@ Revision: |release|
 
     articles/sdk/index.rst
 
+    articles/sde/introduction_to_sde.rst
+
     articles/templates/index.rst
 
     articles/workflow/git-workflow.rst
