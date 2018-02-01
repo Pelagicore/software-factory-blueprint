@@ -77,6 +77,12 @@ For each set of changes
 
 #. Create a pull request in whatever web frontend for git is being used
 
+#. Clean up after the pull request get merged (optional) ::
+
+    $ git checkout master
+    $ git branch -D some_branch_name 
+    $ git push origin :some_branch_name 
+
 Make sure the rest of the team is notified of the pull request. There are different ways of handling
 changes to the pull request. Either any new changes can be added to an existing commit and
 force-pushed to the forked repo, or they can be added on top of the existing commit. The pull
