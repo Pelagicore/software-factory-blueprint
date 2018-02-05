@@ -63,13 +63,13 @@ For each set of changes
 
 #. Make sure your branch is up-to-date with master ::
 
-    $ git pull upstream master --rebase
+   $ git pull upstream master --rebase
 
-    This is to make sure that any conflicts that exist before pushing are resolved locally before
-    pushing. It might be the case that there are more people working on the same code that has a
-    pull request which just got accepted, which would lead to a conflict in master. Then it is
-    better to resolve the conflict in the local branch before creating a new pull request. To keep
-    the git log clear of empty merge commits, we recommend rebasing.
+   This is to make sure that any conflicts that exist before pushing are resolved locally before
+   pushing. It might be the case that there are more people working on the same code that has a
+   pull request which just got accepted, which would lead to a conflict in master. Then it is
+   better to resolve the conflict in the local branch before creating a new pull request. To keep
+   the git log clear of empty merge commits, we recommend rebasing.
 
 #. Push to the forked remote ::
 
