@@ -1,5 +1,5 @@
-Continous Integration
-=====================
+Continuous Integration
+======================
 
 .. toctree::
     :hidden:
@@ -9,7 +9,9 @@ Continous Integration
     build-slaves
     howto-yocto-cache
 
-The continous integration infrastructure consists of different software which is hosted on Linux servers and together makes it possible to host code, build images and run tests.
+The continuous integration infrastructure consists of different software which
+is hosted on Linux servers and together makes it possible to host code, build
+images and run tests.
 
 We use one master host which can host code and runs a build server instance.
 
