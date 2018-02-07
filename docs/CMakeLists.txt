@@ -47,15 +47,15 @@ configure_file(
     "${BINARY_BUILD_DIR}/conf.py"
     @ONLY)
 
-add_custom_target(spell-check
-    COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/check_spelling.sh" "-q" -w "${CMAKE_CURRENT_SOURCE_DIR}"
-    COMMENT "Performing spell check"
+add_custom_target(spelling
+    ${SPHINX_EXECUTABLE}
+        -W -b spelling
+        -c "${BINARY_BUILD_DIR}"
+        -d "${SPHINX_CACHE_DIR}"
+        "${CMAKE_CURRENT_SOURCE_DIR}"
+        "${CMAKE_BINARY_DIR}/spelling"
+    COMMENT "Spell-checking documentation with Sphinx"
 )
-
-option(PERFORM_SPELL_CHECK "Perform the spell check" ON)
-if(PERFORM_SPELL_CHECK)
-    add_dependencies(doc spell-check)
-endif()
 
 add_custom_target(sphinx-html
     ${SPHINX_EXECUTABLE}
@@ -77,7 +77,7 @@ add_custom_target(sphinx-latexpdf
     COMMAND make -C "${SPHINX_PDF_DIR}" all-pdf > /dev/null
     COMMENT "Building Latex/PDF documentation with Sphinx")
 
-add_dependencies(doc sphinx-html)
+add_dependencies(doc spelling sphinx-html)
 
 option(ENABLE_PDF "Enable building documentation in PDF format" OFF)
 if(ENABLE_PDF)

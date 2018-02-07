@@ -43,6 +43,7 @@ extensions = [
     'sphinxcontrib.blockdiag',
     'sphinxcontrib.seqdiag',
     'sphinxcontrib.actdiag',
+    'sphinxcontrib.spelling',
     'sphinxexts.taglist'
 ]
 
@@ -84,6 +85,11 @@ version = u'@PROJECT_VERSION@'
 release = u"@PROJECT_VERSION@-@REVISION@ @DATE@"
 
 language = None
+
+# Spelling options
+spelling_lang='en_US'
+spelling_word_list_filename='spelling_wordlist.txt'
+spelling_show_suggestions=True
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
