@@ -25,6 +25,7 @@ THISDIR='@CMAKE_CURRENT_SOURCE_DIR@'
 # Include the local path to the substitutions module, so we can import it
 sys.path.append(os.path.abspath(os.path.join(THISDIR, 'python_modules')))
 from substitutions import subst as substitutions
+from enchantfilters import SWFFilters
 
 # -- General configuration ------------------------------------------------
 
@@ -90,6 +91,10 @@ language = None
 spelling_lang='en_US'
 spelling_word_list_filename='spelling_wordlist.txt'
 spelling_show_suggestions=True
+
+# The spell-checker does not recognize the git hash in the revision string
+# on the front page automatically, so we wrote a custom filter for that.
+spelling_filters=[SWFFilters.VersionStringFilter]
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
