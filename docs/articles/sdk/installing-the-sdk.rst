@@ -16,7 +16,7 @@ the SDK from the internet, the ``<SDK location>`` is typically ``~/Downloads``.
 .. code-block:: bash
 
     cd <SDK location>
-    chmod +x poky-glibc-x86_64-<image-name>-<arch>-toolchain-<version>.sh
+    chmod +x pelux-glibc-x86_64-<image-name>-<arch>-toolchain-<version>.sh
 
 It is a self extracting shell script which can be executed. This will start an interactive program
 which first asks where to install the SDK. The easiest way is to install it in your `home` directory
@@ -27,11 +27,11 @@ Example:
 
 .. code-block:: bash
 
-    ➜ jdoe@tux Downloads ./poky-glibc-x86_64-core-image-pelux-qt-corei7-64-toolchain-2.2.1.sh
-    Poky (Yocto Project Reference Distro) SDK installer version 2.2.1
-    =================================================================
-    Enter target directory for SDK (default: /opt/poky/2.2.1): ~/sdk
-    You are about to install the SDK to "/home/jdoe/sdk". Proceed[Y/n]? Y
+    ➜ jdoe@tux Downloads ./pelux-glibc-x86_64-core-image-pelux-minimal-cortexa7hf-neon-vfpv4-toolchain-1.0.sh
+    PELUX (Built on Yocto 1.0) SDK installer version 1.0
+    ====================================================
+    Enter target directory for SDK (default: /opt/pelux-sdk-x86_64/1.0):
+    You are about to install the SDK to "/opt/pelux-sdk-x86_64/1.0". Proceed[Y/n]? Y
     Extracting SDK.............done
     Setting it up...done
     SDK has been successfully set up and is ready to be used.
