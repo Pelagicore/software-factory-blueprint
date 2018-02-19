@@ -37,7 +37,8 @@ class GitCommitFilter(Filter):
 class VersionStringFilter(Filter):
     """ If a word looks like a version string, ignore it
 
-        Version strings have the form X.Y.Z-GitRevision
+        Version strings have the form X.Y.Z-GitRevision, or optionally
+        the form X.Y.Z-CodeName-GitRevision, where CodeName can be anything.
     """
 
     # Same as a git commit
@@ -46,8 +47,18 @@ class VersionStringFilter(Filter):
     versionchars = string.digits + "."
 
     def _skip(self, word):
-        (version,sep,revparse) = word.partition('-')
+        (version,sep,rest) = word.partition('-')
         if version == word:
             return False # probably not a version string then
+
+        # The version string has to look right
+        if not all_match(version, self.versionchars):
+            return False
+
+        (codename,sep,revparse) = rest.partition('-')
+        if codename == rest:
+            # Code name is optional, and we don't check it
+            return all_match(rest, self.allowedchars)
         else:
-            return all_match(version, self.versionchars) and all_match(revparse, self.allowedchars)
+            return all_match(revparse, self.allowedchars)
+
