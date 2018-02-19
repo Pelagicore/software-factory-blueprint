@@ -2,7 +2,7 @@
 
 How to cross compile using Qt Creator and PELUX SDE
 ===================================================
-.. taglist:: howto
+.. tags:: howto
 
 Prerequisites:
 --------------
