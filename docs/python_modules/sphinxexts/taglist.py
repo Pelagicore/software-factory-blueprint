@@ -33,10 +33,10 @@ tag:
     list.
 
     Example: ::
-        .. tag:: tag1, tag2
+        .. tags:: tag1, tag2
 
     or: ::
-        .. tag:: tag1
+        .. tags:: tag1
 
 taglist:
     Generate a list of links to tagged documents. The first argument is the tag
