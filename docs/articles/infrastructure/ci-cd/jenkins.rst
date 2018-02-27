@@ -1,7 +1,5 @@
 :orphan:
 
-.. _jenkins:
-
 Jenkins
 =======
 
