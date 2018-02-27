@@ -17,6 +17,13 @@ Dependencies:
 * Vagrant
 * VirtualBox
 
+.. note:: Ubuntu 16.04 default repositories doesn't provide the latest version
+   required. Please check the latest version of `Vagrant`_ and `VirtualBox`_ at those links.
+
+.. _`Vagrant`: https://www.vagrantup.com/downloads.html
+
+.. _`VirtualBox`: https://www.virtualbox.org/wiki/Linux_Downloads
+
 To start the SDE VM, check out the repository, put the SDK into it's root
 directory and from that directory (the same directory as the Vagrantfile is
 located in) run:
@@ -39,7 +46,6 @@ the SDE.
   SDE. Can include bash wildcards. Defaults to `oecore*toolchain*sh`.
 * NO_GUI: Will create a headless SDE when set.
 
-
 Developing and Extending the SDE
 --------------------------------
 
@@ -54,6 +60,13 @@ The SDE is developed using TDD, so first write some tests and then write
 the code which will make them pass. It's really important to have automatic
 tests which will test for any regressions if someone changes parts of the
 code.
+
+Tools list
+^^^^^^^^^^
+Following is a list of tools already installed into the SDE.
+
+* QtCreator: IDE with a template wizard provided to speed the process. 
+* DLT Viewer: Visual application to interact with the dlt-daemon.
 
 Test framework
 ^^^^^^^^^^^^^^
@@ -73,6 +86,8 @@ To run the test framework, run the following command in the root directory:
 
 .. note:: In order to do clean tests, this script will tear down and destroy
    the VM if it is already created
+
+.. note:: Python 3.x version required
 
 Adding new tests
 ================
