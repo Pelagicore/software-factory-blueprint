@@ -1,9 +1,9 @@
 :orphan:
 
-Writing the image
-=================
+Deploying the image
+===================
 
-This section describes how to write the build output, a ready disk-image, to a removable media.
+This section describes how to deploy the build output, a ready disk-image, to a removable media.
 Further information can be found in the `Poky documentation`_.
 
 General instructions
