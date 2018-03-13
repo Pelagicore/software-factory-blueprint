@@ -10,15 +10,39 @@ virtualization feature if found on the host system and run the virtual
 machine in better performance.
 See KVM feature for QEMU [#qemu_kvm_feature]_.
 
-Installing KVM and its dependencies
------------------------------------
+QEMU launch script
+------------------
 
-On Debian-based systems, the following command can be used to install
-the emulator tool and its dependencies:
+There is a QEMU launch script called ``qemu_launcher``, which is shipped with SDK and also available from yocto builds.
 
 .. code-block:: bash
 
-    $ sudo apt-get install qemu-kvm libvirt-clients libvirt-daemon-system
+	$ ./qemu_launcher -h
+	usage: ./qemu_launcher [options]
+	[options] is any of the following:
+        -f | --folder        Specify a source folder of the QEMU image
+                             Defaults to tmp/deploy/images/qemux86-64
+        -i | --hda           Specify rootfs file. Defaults to core-image-pelux-minimal-qemux86-64.ext4
+        -p | --ssh_port      SSH port to connet to QEMU. Defaults to 1234
+        -n | --smp           Number of cpu cores. Defaults to 4
+        -k | --kernel_path   By default, kernel_path is the same as folder, but can be overwritten by using this option
+        -c | --cmdline       Specify kernel command line. This would allow power users to change vga or root, etc.
+                             Defaults to "vga=0 uvesafb.mode_option=1280×720-32 root=/dev/hda console=ttyS0 rw oprofile.timer=1"
+        -m | --mem           Maximum amount of guest memory (Size is in megabytes)
+                             Defaults to 512
+        -t | --gdb_port      The port is forwarded so that gdbserver can listen on it
+                             Then gdb can be run from develop machine to connect to the port for remote debugging
+                             Defaults to 3333
+        -d | --dev           Run QEMU development image instead of normal image
+                             Defaults to core-image-pelux-minimal-dev-qemux86-64.ext4
+        -s | --static        The switch to toggle running QEMU dev image with static IP (Defaults to false)
+        -I | --target_ip     Specify the target static IP, must be 192.168.7.x (Defaults to 192.168.7.2)
+                             Please aware that to change the default static IP, it is also needed to update the
+                             STATIC_IP_ADDRESS in local.conf in meta layer and rebuild the image
+        -g | --server_ip     Specify the gateway server IP, must be 192.168.7.x (Defaults to 192.168.7.1)
+        -l | --list          List all available images from the default folder or folder user specified
+        -h | --help          Display this help
+
 
 
 Launching the virtual machine
@@ -35,17 +59,10 @@ using the following command:
 
 .. code-block:: bash
 
-   sudo kvm -kernel tmp/deploy/images/qemux86-64/bzImage \
-      -net nic \
-      -net user,hostfwd=tcp::1234-:22 \
-      -cpu Broadwell \
-      -smp 4 \
-      -hda tmp/deploy/images/qemux86-64/core-image-pelux-minimal-qemux86-64.ext4 \
-      -vga qxl \
-      -no-reboot \
-      -soundhw ac97 \
-      -m 512 \
-      -append "vga=0 uvesafb.mode_option=1280×720-32 root=/dev/hda console=ttyS0 rw mem=512M oprofile.timer=1 " -serial stdio
+   ./qemu_launcher -f FOLDER -i core-image-pelux-minimal-qemux86-64.ext4
+
+The above command will load kernel and the image ``core-image-pelux-minimal-qemux86-64.ext4`` from ``FOLDER``
+
 
 Static IP address configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -58,16 +75,7 @@ using the following command:
 
 .. code-block:: bash
 
-   sudo kvm -kernel tmp/deploy/images/qemux86-64/bzImage \
-      -device virtio-net-pci,netdev=net0,mac=52:54:00:12:34:02 -netdev tap,id=net0,ifname=tap0,script=no,downscript=no \
-      -cpu Broadwell \
-      -smp 4 \
-      -hda tmp/deploy/images/qemux86-64/core-image-pelux-minimal-qemux86-64.ext4 \
-      -vga qxl \
-      -no-reboot \
-      -soundhw ac97 \
-      -m 512 \
-      -append "vga=0 uvesafb.mode_option=1280×720-32 root=/dev/hda console=ttyS0 rw mem=512M oprofile.timer=1 ip=192.168.7.2::192.168.7.1:255.255.255.0" -serial stdio
+   ./qemu_launcher -f FOLDER -i core-image-pelux-minimal-qemux86-64.ext4 -s
 
 The above script will launch QEMU with a tap device ``tap0`` on the host machine
 where guest networking can be routed through the tap interface.
@@ -95,6 +103,16 @@ commands on the host machine:
    sudo ip route add to 192.168.7.1 dev tap0
    sudo iptables -A POSTROUTING -t nat -j MASQUERADE -s 192.168.7.1/24
    sudo iptables -P FORWARD ACCEPT
+
+Instead of using the default target IP ``192.168.7.2`` and the server address
+``192.168.7.1``, it is possible to specify the target IP and server IP as shown below:
+
+.. code-block:: bash
+
+   ./qemu_launcher -f FOLDER -i core-image-pelux-minimal-qemux86-64.ext4 -s --target_ip 192.168.11.18 --server_ip 192.168.11.1
+
+Please aware that to make the new static IP work, it is also needed to update
+``STATIC_IP_ADDRESS`` in ``local.conf`` in meta layer and rebuild the image.
 
 
 Supported emulated hardware configuration
