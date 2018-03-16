@@ -318,3 +318,5 @@ POSTROUTING
 virtio
 backend
 dlt
+gdbserver
+strace
