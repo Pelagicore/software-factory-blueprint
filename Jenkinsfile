@@ -6,9 +6,10 @@
  * Please see the LICENSE file for details.
  */
 
-void configureAndBuild(String name, String dir, String params) {
+void configureAndBuild(String name, String dir) {
     stage("Configure ${name}") {
-        sh "cd ${dir} && cmake -H. -Bbuild ${params}"
+        String cmake_params = "-DENABLE_PDF=OFF"
+        sh "cd ${dir} && cmake -H. -Bbuild ${cmake_params}"
     }
 
     stage("Build ${name}") {
@@ -22,7 +23,6 @@ void configureAndBuild(String name, String dir, String params) {
 
 String SWF_DIR = "SWF_SRC"
 String SWF_BP_DIR = "SWF_BP_SRC"
-String cmake_params = "-DENABLE_PDF=OFF"
 
 pipeline {
     agent {
@@ -62,7 +62,7 @@ pipeline {
                     steps {
                         script {
                             // Configure, build, and archive the blueprint
-                            configureAndBuild("Blueprint", SWF_BP_DIR, cmake_params)
+                            configureAndBuild("Blueprint", SWF_BP_DIR)
                         }
                     }
                 }
@@ -71,7 +71,7 @@ pipeline {
                     steps {
                         script {
                             // The same, but building it with the SWF Baseline
-                            configureAndBuild("SWF + Blueprint", SWF_DIR, cmake_params)
+                            configureAndBuild("SWF + Blueprint", SWF_DIR)
                         }
                     }
                 }
