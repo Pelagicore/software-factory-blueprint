@@ -22,6 +22,7 @@ void configureAndBuild(String name, String dir, String params) {
 
 String SWF_DIR = "SWF_SRC"
 String SWF_BP_DIR = "SWF_BP_SRC"
+String cmake_params = "-DENABLE_PDF=OFF"
 
 pipeline {
     agent {
@@ -36,7 +37,6 @@ pipeline {
     stages {
         stage('Download') {
             steps {
-
                 // Delete old files
                 sh 'rm -rf .[^.] .??* *'
 
@@ -56,16 +56,24 @@ pipeline {
             }
         }
 
-        stage("Configure and build") {
-            steps {
-                script {
-                    String cmake_params = "-DENABLE_PDF=OFF"
+        stage("Launch build") {
+            parallel {
+                stage("Blueprint") {
+                    steps {
+                        script {
+                            // Configure, build, and archive the blueprint
+                            configureAndBuild("Blueprint", SWF_BP_DIR, cmake_params)
+                        }
+                    }
+                }
 
-                    // Configure, build, and archive the blueprint
-                    configureAndBuild("Blueprint", SWF_BP_DIR, cmake_params)
-
-                    // The same, but building it with the SWF Baseline
-                    configureAndBuild("SWF + Blueprint", SWF_DIR, cmake_params)
+                stage("SWF + Blueprint") {
+                    steps {
+                        script {
+                            // The same, but building it with the SWF Baseline
+                            configureAndBuild("SWF + Blueprint", SWF_DIR, cmake_params)
+                        }
+                    }
                 }
             }
         }
