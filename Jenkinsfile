@@ -41,8 +41,8 @@ pipeline {
                 sh 'rm -rf .[^.] .??* *'
 
                 // Get the latest SWF src
-                sh "git clone ${REMOTE_SWF_LINK} ${SWF_DIR}"
-                sh "cd ${SWF_DIR} && git checkout origin/${BRANCH_SWF}"
+                sh "git clone ${params.REMOTE_SWF_LINK} ${SWF_DIR}"
+                sh "cd ${SWF_DIR} && git checkout origin/${params.BRANCH_SWF}"
 
                 // Checkout BP src along wth changes in pull request
                 sh "mkdir ${SWF_BP_DIR}"
