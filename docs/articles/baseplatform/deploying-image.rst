@@ -13,6 +13,7 @@ Use the ``dd`` utility to write the image to the raw block device. For example:
 .. code-block:: bash
 
     dd if=<image-name> of=<host-device> bs=4M
+    sync
 
 .. note:: The <image-name> depends on your arch and image recipe name. You can
           find all images in ``tmp/deploy/images/<arch>/`` in your build directory.
