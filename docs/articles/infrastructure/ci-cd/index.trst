@@ -9,6 +9,7 @@ Continuous Integration
     build-slaves
     howto-yocto-cache
     docker-registry
+    freeipa
 
 The continuous integration infrastructure consists of different software which
 is hosted on Linux servers and together makes it possible to host code, build
