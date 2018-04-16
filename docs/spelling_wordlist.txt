@@ -330,6 +330,7 @@ resolv
 ipaserver
 autodiscovery
 nameserver
+nameservers
 uid
 guid
 ipa

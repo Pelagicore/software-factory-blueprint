@@ -90,6 +90,12 @@ during installation.
 
         ipa-server-install --uninstall
 
+.. warning::
+
+    If you want to run Docker containers on the same machine as FreeIPA, be
+    aware of how Docker configures DNS by looking at the :ref:`freeipa-docker`
+    section.
+
 Enroll a client
 ---------------
 
@@ -203,6 +209,28 @@ the certificate server created during installation. Especially if it fails with
     rm -rf /etc/default/pki-tomcat 
     rm -rf /etc/dogtag/tomcat/pki-tomcat
     ipa-server-install --uninstall -U
+
+.. _freeipa-docker:
+
+Running docker with FreeIPA server
+""""""""""""""""""""""""""""""""""
+
+If you're running Docker on the same machine as FreeIPA server you will have
+issues with DNS. Since FreeIPA acts as a DNS server it will add ``nameserver
+127.0.0.1`` to ``/etc/resolv.conf``. When setting up a new container, the
+docker daemon copies ``/etc/resolv.conf`` and filters out all localhost IP
+address ``nameserver`` entries. If there are no more ``nameserver`` entries
+left, the daemon will then add Google DNS nameservers (8.8.8.8 and 8.8.4.4)
+to the containers DNS configuration.
+
+To avoid Google DNS servers, use the ``--dns`` option with ``docker run`` or
+add an entry to ``/etc/docker/daemon.json``:
+
+.. code-block:: json
+
+    {
+        "dns": ["198.51.100.5", "198.51.100.6"]
+    }
 
 Client
 ^^^^^^
