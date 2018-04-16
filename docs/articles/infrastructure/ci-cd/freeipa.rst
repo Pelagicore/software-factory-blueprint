@@ -179,6 +179,9 @@ Troubleshooting
 Server
 ^^^^^^
 
+Installation issues
+"""""""""""""""""""
+
 If the installation fails with "Unable to restart server", look in the logs for
 the certificate server.
 
@@ -273,6 +276,9 @@ to access the system.
     netgroup:       nis sss
     sudoers: files sss
 
+Home directory
+""""""""""""""
+
 If no home directory is created upon loging in with an ipa user, use the
 commands below. 
 
@@ -286,7 +292,7 @@ commands below.
 .. _remove-openldap:
 
 Remove OpenLDAP connection
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""
 .. code-block:: bash
 
     sudo apt-get purge libnss-ldapd libpam-ldapd nslcd nscd
