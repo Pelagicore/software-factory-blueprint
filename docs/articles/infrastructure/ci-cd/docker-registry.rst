@@ -1,5 +1,7 @@
 :orphan:
 
+.. _private-docker-registry:
+
 Private Docker Registry
 =======================
 
