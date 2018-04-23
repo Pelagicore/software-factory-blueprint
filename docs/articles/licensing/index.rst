@@ -24,4 +24,10 @@ compliance tooling will be using in the future, and indeed already is
 used by tool makers such as WindRiver and Black Duck, they are included
 both for support for tooling and future proofing the format.
 
+.. toctree::
+    :caption: GPLv3 license in automotive industry
+    :maxdepth: 1
+
+    gplv3/gplv3-blacklist.rst
+
 .. tags:: process

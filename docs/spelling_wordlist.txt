@@ -342,3 +342,7 @@ compat
 IPv
 subdomain
 uninstall
+GPLv
+initramfs
+efi
+partprobe
