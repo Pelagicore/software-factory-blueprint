@@ -6,7 +6,7 @@ How to use development image
 
 Introduction
 -------------
-The dev image is a superset of its corresponding production image for each
+The dev image is a super-set of its corresponding production image for each
 variant, furthermore, it includes some more packages and tools, e.g. gdb,
 strace, etc. for the sake of developing an debugging convenience. Therefore,
 the dev image will be delivered together with the production image for each
