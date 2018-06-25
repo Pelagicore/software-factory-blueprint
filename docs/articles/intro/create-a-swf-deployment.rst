@@ -7,6 +7,11 @@ This how-to describes how to practically go about creating a new instance
 of a software factory by configuring git, creating directories and
 indexes.
 
+Connecting to GitHub with SSH
+=============================
+
+In order to use GitHub, you must first set up an ssh configuration if you have not done it already. Instructions can be found on :ref:`git-workflow`.
+
 Create a git repo for the SWF Deployment
 ========================================
 

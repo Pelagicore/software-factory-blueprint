@@ -1,4 +1,4 @@
-:orphan:
+.. _git-workflow: 
 
 Git workflow
 ************
