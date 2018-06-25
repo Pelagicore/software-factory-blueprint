@@ -26,14 +26,14 @@ The Jenkins project offers preinstalled Docker images which can be used to vastl
    [Install]
    WantedBy=multi-user.target
 
-This runs Jenkins and mounts ``/var/www`` into the Jenkins container at the same place which makes it possible for Jenkins to store some artifacts in a place where a http server can reach them and serve them.
+This runs Jenkins and mounts ``/var/www`` into the Jenkins container at the same place which makes it possible for Jenkins to store some artifacts in a place where a HTTP server can reach them and serve them.
 
 nginx configuration
 -------------------
 .. code-block:: none
 
     # Nginx configuration specific to Jenkins
-    # Note that regex takes precedence, so use of "^~" ensures earlier evaluation
+    # Note that regex takes precedence, so the use of "^~" ensures earlier evaluation
     location ^~ /jenkins/ {
 
         # Convert inbound WAN requests for https://domain.tld/jenkins/ to
@@ -102,7 +102,7 @@ Then you can open this jenkins instance in your browser and put this password th
 
    http://localhost:8080/jenkins/
 
-After that you can also set up a nginx instance as a proxy so you don't need the port number in the URL, but you don't need to do that on your development machine.
+After that, you can also set up a nginx instance as a proxy so you don't need the port number in the URL, but you don't need to do that on your development machine.
 
 Plugins
 -------
