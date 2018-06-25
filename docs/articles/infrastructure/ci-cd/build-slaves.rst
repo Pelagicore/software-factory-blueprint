@@ -136,7 +136,7 @@ Replace <URL> in the file with the real URL to the Jenkins server.
 6. Save
 7. Click on that slave in the list to get to the online/offline view of it
 8. Copy the command line shown there and put it into the ``jenkins.slave.service`` file
-9. Download the linked ``slave.jar`` and put it into the home directory of the jenkins user so that the service can find it
+9. Download the linked ``agent.jar`` (``slave.jar`` for older versions) and put it into the home directory of the jenkins user so that the service can find it
 10. Copy the changed ``jenkins.slave@.service`` to ``/lib/systemd/system/``
 11. Enable and start the service: ``sudo systemctl enable jenkins.slave@jenkins && sudo systemctl start jenkins.slave@jenkins``
 12. Check if the slave connected without problems ``sudo journalctl -b -u jenkins.slave@jenkins``
