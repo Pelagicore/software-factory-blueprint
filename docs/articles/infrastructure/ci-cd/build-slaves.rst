@@ -9,7 +9,7 @@ Running a public slave
 In order to run a slave which the master can reach via SSH you still need to
 prepare some things. 
 
-First install docker from `dockers own repositories`_. (The package in Ubuntu,
+First, install docker from `dockers own repositories`_. (The package in Ubuntu,
 for example, is old and outdated):
 
 .. _dockers own repositories: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/
@@ -31,13 +31,13 @@ Now install the other dependencies through apt and setup the jenkins user.
    sudo sh -c 'echo "{ \"storage-driver\": \"overlay2\" }" > /etc/docker/daemon.json'
 
 There is currently a bug in the kernel of Ubuntu 16.04 which under certain
-circumstances causes ``tar -x`` to fail on overlayfs with something like:
+circumstances cause ``tar -x`` to fail on overlayfs with something like:
 
 .. code-block:: none
 
   tar: ./deps/0/bin: Directory renamed before its status could be extracted
 
-This can affect yocto builds inside of Vagrant. More information is available
+This can affect Yocto builds inside of Vagrant. More information is available
 in `the bug report`_. In short, this bug was fixed in the linux package for
 Xenial (16.04) as of version 4.4.0-103.126. Install the patched kernel:
 
@@ -88,7 +88,7 @@ Configuring Jenkins
     * 7c. Set "Username" to "jenkins" (assuming that you use this UNIX username for your jenkins user)
     * 7d. Set "Private Key" to "Enter Directly", and supply the *private* key you generated previously
     * 7e. Set "Passphrase" as needed, or leave empty if no passphrase is set
-    * 7f. Set "Description" to a suitable description
+    * 7f. Add a suitable description in the "Description"
 
 8. Select the correct key in "Credentials"
 9. Set "Host Key Verification Strategy" to "Non verifying Verification Strategy"
@@ -101,7 +101,7 @@ You may verify the status of the build slave under the status page of the build 
 Running a private slave
 -----------------------
 
-Sometimes it's necessary to run slaves from a private network. Then you need to run a java program which will connect to the master instead the master connecting to the slave. To do so, set up a new slave in Jenkins.
+Sometimes it's necessary to run slaves from a private network. Then you need to run a java program which will connect to the master instead of the master connecting to the slave. To do so, set up a new slave in Jenkins.
 
 Prerequisites
 ^^^^^^^^^^^^^
