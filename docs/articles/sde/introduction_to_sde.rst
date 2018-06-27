@@ -16,6 +16,7 @@ Dependencies:
 
 * Vagrant
 * VirtualBox
+* Self-extracting SDK package to install into the SDE. See, :ref:`building-the-sdk`.
 
 .. note:: Ubuntu 16.04 default repositories doesn't provide the latest version
    required. Please check the latest version of `Vagrant`_ and `VirtualBox`_ at those links.
@@ -30,7 +31,7 @@ located in) run:
 
 .. code-block:: bash
 
-    vagrant up
+    SDK_FILE_NAME=<SDK installer> vagrant up
 
 If this is the first time the SDE is started then the machine has
 to be provisioned as well. Meaning downloading the Ubuntu base and installing
