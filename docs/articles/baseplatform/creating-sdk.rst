@@ -5,8 +5,8 @@
 Building the SDK installer
 ===========================
 
-Building the SDK installer is not very different from creating the corresponding
-target image. All you have to do, is pass an additional option to bitbake:
+Building the SDK installer is not very different from the instructions on `building-pelux sources <http://pelux.io/software-factory/master/chapters/baseplatform/building-PELUX-sources.html>`_ to create the corresponding target image. All you have to do, is pass an additional option to bitbake:
+
 
 .. code-block:: bash
 
