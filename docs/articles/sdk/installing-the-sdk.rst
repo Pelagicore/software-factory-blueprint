@@ -11,7 +11,7 @@ Installing the SDK
 ------------------
 
 The SDK file is not executable by default. This needs to be changed with `chmod`. If you downloaded
-the SDK from the internet, the ``<SDK location>`` is typically ``~/Downloads``. If you built the SDK, it can be found on ``../build/tmp/deploy/sdk`` 
+the SDK from the internet, the ``<SDK location>`` is typically ``~/Downloads``. If you built the SDK from build directory, it can be found on ``tmp/deploy/sdk`` 
 
 .. code-block:: bash
 

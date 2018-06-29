@@ -11,7 +11,7 @@ Layers maintained by the PELUX project:
 
 .. image:: pelux-layers.png
    :scale: 80 %
-   :alt: map to buried treasure
+   :alt: pelux layers 
 
 
 
