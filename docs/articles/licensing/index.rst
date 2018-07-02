@@ -14,7 +14,7 @@ order to achieve what is stated above, the header should include:
 * An SPDX tag
 
 Examples of this setup for different programming languages can be found here:
-https://github.com/Pelagicore/OpenSourceTemplates/tree/master/examples
+`here <https://github.com/Pelagicore/OpenSourceTemplates/tree/master/examples>`_
 
 The rationale behind using both a license header and an SPDX tag is to
 make it readable for humans that do not know the abbreviations of
