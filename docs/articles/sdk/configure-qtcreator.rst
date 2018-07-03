@@ -123,6 +123,12 @@ Kit
   the result of the ``echo ${SDKTARGETSYSROOT}`` command ran in an SDK terminal
 * Choose the previously defined PELUX C and C++ compilers from the corresponding combo boxes
 * Change the environment of this kit to the result of the ``env`` command ran in an SDK terminal
+    * If ``CC`` and ``CXX`` have default compiler flags, those should be added in ``CFLAGS`` and ``CXXFLAGS``
+      To replace ``CFLAGS`` and ``CXXFLAGS``, use the result of the below command ran in
+      an SDK terminal
+
+      ``echo $CC | awk -v c="$CFLAGS" '{first = $1; $1 = ""; print "CFLAGS="$0, c;}'``
+      ``echo $CXX | awk -v c="$CXXFLAGS" '{first = $1; $1 = ""; print "CXXFLAGS="$0, c;}'``
 * Choose the previously defined debugger from the corresponding combo box
 * Choose the previously defined CMake from the corresponding combo box
 * Change the ``CMake Configuration`` to add a ``CMAKE_SYSROOT:STRING=<sysroot path>``
