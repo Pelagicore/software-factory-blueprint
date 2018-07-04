@@ -124,7 +124,7 @@ Kit
 * Choose the previously defined PELUX C and C++ compilers from the corresponding combo boxes
 * Change the environment of this kit to the result of the ``env`` command ran in an SDK terminal
     * If ``CC`` and ``CXX`` have default compiler flags, those should be added in ``CFLAGS`` and ``CXXFLAGS``
-      To replace ``CFLAGS`` and ``CXXFLAGS``, use the result of the below command ran in
+      To replace ``CFLAGS`` and ``CXXFLAGS``, use the result of the below commands ran in
       an SDK terminal
 
       ``echo $CC | awk -v c="$CFLAGS" '{first = $1; $1 = ""; print "CFLAGS="$0, c;}'``
