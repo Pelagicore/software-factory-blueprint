@@ -25,13 +25,15 @@ Dependencies:
 
 .. _`VirtualBox`: https://www.virtualbox.org/wiki/Linux_Downloads
 
-To start the SDE VM, check out the repository, put the SDK into it's root
+To start the SDE VM, check out the `repository <https://github.com/Pelagicore/pelux-sde>`_, put the SDK into its root
 directory and from that directory (the same directory as the Vagrantfile is
 located in) run:
 
 .. code-block:: bash
 
     SDK_FILE_NAME=<SDK installer> vagrant up
+
+The username and password for the SDE VM is ``vagrant``.
 
 If this is the first time the SDE is started then the machine has
 to be provisioned as well. Meaning downloading the Ubuntu base and installing
