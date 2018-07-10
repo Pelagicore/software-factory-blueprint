@@ -2,8 +2,8 @@
 
 .. _arch-layer:
 
-Layers maintained by the PELUX project:
-=======================================
+Layers maintained by the PELUX project
+======================================
 
 - `meta-pelux <https://github.com/pelagicore/meta-pelux/>`_ contains the base platform and the PELUX image recipes.
 - `meta-bistro <https://github.com/pelagicore/meta-bistro/>`_ adds IVI specific components and additions to relevant OSS components.

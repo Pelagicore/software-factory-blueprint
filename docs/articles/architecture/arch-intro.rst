@@ -24,6 +24,7 @@ Reader's guide
 - The :ref:`arch-template` is a base document used for creating 
   component and subsystem architecture documentation.
 - The :ref:`arch-glossary` clarifies terms and abbreviations.
+- The :ref:`arch-layers` presents the layers used in pelux. 
 
 .. _`arc42`: <http://arc42.org>
 

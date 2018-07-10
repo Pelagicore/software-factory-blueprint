@@ -7,9 +7,8 @@ Base platform
     prerequisites.rst
     using-the-repo-tool.rst
     repo-manifests.rst
-    reproducible-yocto-builds
     deploying-image.rst
     creating-sdk.rst
     creating-a-new-layer.rst
     variant-concept-in-yocto.rst
-
+    reproducible-yocto-builds

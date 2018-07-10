@@ -24,13 +24,6 @@ the actual project SWF structure and order of articles.
 An example, and reference, SWF Deployment is the PELUX Baseline SWF
 Deployment [#pelux-swf]_.
 
-
-.. toctree::
-    :hidden:
-
-    create-a-swf-deployment
-    create-an-initial-index
-
 .. [#pelux-swf] http://pelux.io/software-factory
 
 .. tags:: howto
