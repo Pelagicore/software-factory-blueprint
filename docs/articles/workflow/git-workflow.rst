@@ -30,8 +30,8 @@ been set up yet. To quick fix ::
     $ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
     # This will generate a new ssh key for you
 
-    $ sudo apt-get install xclip
-    # Downloads and installs xclip. If you don't have `apt-get`, you might need to use another installer (like `yum`)
+    $ sudo apt install xclip
+    # Downloads and installs xclip
 
     $ xclip -sel clip < ~/.ssh/id_rsa.pub
     # Copies the contents of the id_rsa.pub file to your clipboard

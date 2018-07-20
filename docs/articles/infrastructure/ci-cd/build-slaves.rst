@@ -44,7 +44,7 @@ Xenial (16.04) as of version 4.4.0-103.126. Install the patched kernel:
 .. code-block:: bash
 
   # Installed the latest kernel patches for 16.04
-  sudo apt-get install linux-generic
+  sudo apt install linux-generic
 
   # Reboot to use the updated kernel
   sudo reboot

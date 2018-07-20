@@ -61,7 +61,7 @@ Installation
 .. code-block:: bash
     :caption: Install the packages
 
-    sudo apt-get install freeipa-server freeipa-server-dns
+    sudo apt install freeipa-server freeipa-server-dns
 
 .. code-block:: bash
     :caption: Setup the FreeIPA server
@@ -116,7 +116,7 @@ machine is controlled centrally from FreeIPA through policies.
 
 .. code-block:: bash
 
-    sudo apt-get install freeipa-client
+    sudo apt install freeipa-client
 
 Set fully qualified hostname with
 
@@ -295,7 +295,7 @@ Remove OpenLDAP connection
 """"""""""""""""""""""""""
 .. code-block:: bash
 
-    sudo apt-get purge libnss-ldapd libpam-ldapd nslcd nscd
+    sudo apt purge libnss-ldapd libpam-ldapd nslcd nscd
     # You may also want to
     sudo apt autoremove
 

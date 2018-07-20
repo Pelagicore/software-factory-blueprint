@@ -26,7 +26,7 @@ Software Factory. This approach is described in the intro chapter of these docs.
 ###  Install build dependencies on Debian
 
 ```
-sudo apt-get install cmake python-pip
+sudo apt install cmake python-pip
 sudo pip install \
     sphinxcontrib-seqdiag \
     sphinxcontrib-blockdiag \
