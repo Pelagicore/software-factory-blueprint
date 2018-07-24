@@ -157,6 +157,7 @@ How to open the template service project with QtCreator
 * Here you should select the kit to use to build project
 * Select the kit you have already created in the previous step and click ``Configure``
 * You can now compile and deploy to your target using the green arrow on the left of your screen
-
+* You can also remotely debug your program using the green arrow with a gray insect on the left of your screen.
+  This, however, requires ``gdbserver`` which is installed by default in ``core-image-pelux-*-dev`` images
 
 .. tags:: howto
