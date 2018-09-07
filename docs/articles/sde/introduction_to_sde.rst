@@ -18,7 +18,7 @@ Dependencies:
 * VirtualBox
 * Self-extracting SDK package to install into the SDE. See, :ref:`building-the-sdk`.
 
-.. note:: Ubuntu 16.04 default repositories doesn't provide the latest version
+.. note:: Ubuntu 16.04 default repositories do not provide the latest version
    required. Please check the latest version of `Vagrant`_ and `VirtualBox`_ at those links.
 
 .. _`Vagrant`: https://www.vagrantup.com/downloads.html

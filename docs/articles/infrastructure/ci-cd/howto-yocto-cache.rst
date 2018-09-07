@@ -18,7 +18,7 @@ all downloaded packages, including those downloaded over SVN or git or similar,
 and ``sstate-cache`` contains everything that was built, so basically binaries
 plus some meta-data stating that it has actually been built and what version and
 so on. One reason why the meta-data is useful is because otherwise the system
-might try to reuse binaries for x86 when building for armv7, which wouldn't
+might try to reuse binaries for x86 when building for armv7, which would not
 work.
 
 In general, when using a cached build in yocto, there are two options that needs
