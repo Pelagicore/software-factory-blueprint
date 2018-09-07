@@ -17,7 +17,7 @@ void configureAndBuild(String name, String dir) {
     }
 
     stage("Archive ${name}") {
-        archive "${dir}/build/**"
+        archiveArtifacts artifacts: '${dir}/build/**', fingerprint: true
     }
 }
 
