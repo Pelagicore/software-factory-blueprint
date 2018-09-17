@@ -54,15 +54,6 @@ from docutils.parsers.rst import Directive
 from docutils import nodes
 from sphinx.environment import NoUri
 
-
-def initialize(app):
-    env = app.builder.env
-    if not hasattr(env, 'tags'):
-        env.tags = dict()
-    if not hasattr(env, 'taglist_docs'):
-        env.taglist_docs = []
-
-
 class tag_node(nodes.General, nodes.Element):
     #: list(str): Tags associated with the node
     tags = []
@@ -117,10 +108,13 @@ class TagListDirective(Directive):
         nodes that will be inserted into the document tree at the point where
         the directive was encountered.
         '''
+        env = self.state.document.settings.env
+        if not hasattr(env, 'taglist_docs'):
+            env.taglist_docs = []
+
         tl = taglist('')
         tl.tags = self.arguments
 
-        env = self.state.document.settings.env
         if env.docname not in env.taglist_docs:
             env.taglist_docs.append(env.docname)
 
@@ -140,6 +134,8 @@ def process_tags(app, doctree):
 
     '''
     env = app.builder.env
+    if not hasattr(env, 'tags'):
+        env.tags = dict()
 
     for node in doctree.traverse(tag_node):
         for tagname in node.tags:
@@ -168,6 +164,8 @@ def generate_list_items(app, tagname, fromdocname, sort=True):
 
     '''
     env = app.builder.env
+    if not hasattr(env, 'tags'):
+        env.tags = dict()
 
     if sort:
         docs = sorted(env.tags[tagname], key=lambda doc: doc['title'].lower())
@@ -230,6 +228,8 @@ def process_taglist_nodes(app, doctree, fromdocname):
 
     '''
     env = app.builder.env
+    if not hasattr(env, 'tags'):
+        env.tags = dict()
 
     for node in doctree.traverse(taglist):
         content = []
@@ -258,6 +258,11 @@ def purge_doc(app, env, docname):
 
     '''
     tags = dict()
+    if not hasattr(env, 'tags'):
+        env.tags = dict()
+    if not hasattr(env, 'taglist_docs'):
+        env.taglist_docs = []
+
     for tagname in env.tags:
         newdocs = [doc for doc in env.tags[tagname] if doc['docname'] != docname]
         if newdocs:
@@ -277,20 +282,23 @@ def reread_taglist_docs(app, env, added, changed, removed):
         determined by sphinx.
 
     '''
-    return env.taglist_docs
+    if not hasattr(env, 'taglist_docs'):
+        return []
+    else:
+        return env.taglist_docs
 
 
 def setup(app):
+
     app.add_node(taglist)
     app.add_node(tag_node)
 
     app.add_directive('tags', TagDirective)
     app.add_directive('taglist', TagListDirective)
 
-    app.connect('builder-inited', initialize)
     app.connect('doctree-read', process_tags)
     app.connect('doctree-resolved', process_taglist_nodes)
     app.connect('env-purge-doc', purge_doc)
     app.connect('env-get-outdated', reread_taglist_docs)
 
-    return {'version': '0.2'}  # identifies the version of the extension
+    return {'version': '0.3', 'env_version': 1}  # identifies the version of the extension
