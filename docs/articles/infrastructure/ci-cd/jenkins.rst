@@ -19,8 +19,6 @@ The Jenkins project offers preinstalled Docker images which can be used to vastl
    TimeoutStartSec=0
    Restart=always
    ExecStartPre=-/usr/bin/docker stop %n
-   ExecStartPre=-/usr/bin/docker rm %n
-   ExecStartPre=/usr/bin/docker pull jenkinsci/jenkins:lts
    ExecStart=/usr/bin/docker run --rm --name %n -p 8080:8080 --env JENKINS_OPTS="--prefix=/jenkins" --env JENKINS_JAVA_OPTIONS="-Djava.io.tmpdir=$JENKINS_HOME/tmp" -v jenkins_home:/var/jenkins_home -v /var/www/:/var/www/ jenkinsci/jenkins:lts
    
    [Install]

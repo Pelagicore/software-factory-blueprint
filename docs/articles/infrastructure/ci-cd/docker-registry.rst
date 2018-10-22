@@ -31,8 +31,6 @@ registry.
    TimeoutStartSec=0
    Restart=always
    ExecStartPre=-/usr/bin/docker stop %n
-   ExecStartPre=-/usr/bin/docker rm %n
-   ExecStartPre=/usr/bin/docker pull registry:2
    ExecStart=/usr/bin/docker run --rm --name %n \
              -e REGISTRY_HTTP_ADDR=0.0.0.0:80 \
              -p 8082:80 \
