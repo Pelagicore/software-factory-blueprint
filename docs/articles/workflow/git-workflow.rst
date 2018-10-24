@@ -17,6 +17,7 @@ General setup
 #. Clone the original fork and add a remote for the upstream to the repo ::
 
     $ git clone git@github.com:<username>/software-factory.git
+    $ cd software-factory
     $ git remote add upstream git@github.com:Pelagicore/software-factory.git
 
 This will make the fork have ``origin`` as remote name, which we think feels most natural for most
