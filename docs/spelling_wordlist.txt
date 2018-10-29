@@ -346,3 +346,4 @@ GPLv
 initramfs
 efi
 partprobe
+lfs
