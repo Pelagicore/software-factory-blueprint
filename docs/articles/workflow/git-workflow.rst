@@ -25,8 +25,8 @@ developers, as it is the repository the developer will typically push to.  On th
 recommend to always type the remote and branch name when pushing, which forces the developer to be
 more explicit about their intentions.
 
-If you didn't manage to clone the repo via the steps above, it most likely due to the SSH key hasn't
-been set up yet. To quick fix ::
+If you did not manage to clone the repo via the steps above, it is most likely due to that the SSH
+key not being set up. To fix this quickly ::
 
     $ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
     # This will generate a new ssh key for you
@@ -81,8 +81,8 @@ For each set of changes
 #. Clean up after the pull request get merged (optional) ::
 
     $ git checkout master
-    $ git branch -D some_branch_name 
-    $ git push origin :some_branch_name 
+    $ git branch -D some_branch_name
+    $ git push origin :some_branch_name
 
 Make sure the rest of the team is notified of the pull request. There are different ways of handling
 changes to the pull request. Either any new changes can be added to an existing commit and

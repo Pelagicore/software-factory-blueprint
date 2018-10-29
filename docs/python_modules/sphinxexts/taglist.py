@@ -126,7 +126,7 @@ def process_tags(app, doctree):
 
     Save metadata here instead of the directive because of unfinished
     processing when the directive is called. For e.g. titles not generated.
-    Finally remove node from the doctree as it's not supposed to render.
+    Finally remove node from the doctree as it is not supposed to render.
 
     Args:
         app (Sphinx): The sphinx application object.

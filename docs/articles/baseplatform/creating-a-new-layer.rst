@@ -178,7 +178,7 @@ and
     SRC_URI = "${MY_PROJECT_GIT_URL}/project.git"
 
 This can save you some later pain if the code gets moved to a new server, because in this way you
-won't need to modify all the recipes.
+will not need to modify all the recipes.
 
 Optionally depending on other layers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

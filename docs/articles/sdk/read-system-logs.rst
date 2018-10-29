@@ -58,7 +58,7 @@ is set to TCP.  On the second tab, named "IP", use the IP address of your
 target and and make sure the port is set to 3490. You can then hit the "OK"
 button and your machine should appear in the "Project" part of the main window.
 
-.. note:: If you don't know the IP address of your target, the `Raspberry Pi
+.. note:: If you do not know the IP address of your target, the `Raspberry Pi
           documentation`_ describes how to find a new device on the network.
           This can be used for any target, not just Raspberry Pi
 

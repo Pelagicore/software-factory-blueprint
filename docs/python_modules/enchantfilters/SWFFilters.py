@@ -57,8 +57,7 @@ class VersionStringFilter(Filter):
 
         (codename,sep,revparse) = rest.partition('-')
         if codename == rest:
-            # Code name is optional, and we don't check it
+            # Code name is optional, and we do not check it
             return all_match(rest, self.allowedchars)
         else:
             return all_match(revparse, self.allowedchars)
-

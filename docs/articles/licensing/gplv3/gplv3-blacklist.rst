@@ -2,7 +2,7 @@ GPLv3 in automotive
 -------------------
 
 Car makers prioritize safety and security of vehicle software.
-Car makers won't let users modify vehicle software because they carefully test
+Car makers will not let users modify vehicle software because they carefully test
 and certify their software and any change can compromise safety. GPLv3 software
 explicitly states that users must be able to modify software, and installation
 information provided even if that includes private encryption keys. Car makers
@@ -41,7 +41,7 @@ Screening GPLv3 licensed software in Yocto
    .. code-block:: bash
 
      EFI_PROVIDER = "systemd-boot"
-6. Blacklist GPLv3 license 
+6. Blacklist GPLv3 license
 
    .. code-block:: bash
 
@@ -61,4 +61,3 @@ Impact of removing GPLv3 licensed software
 SWUpdate feature for Raspberry Pi currently requires `partprobe`, a GPLv3 tool,
 for re-partitioning. So as of now it will be non-functional with the removal of
 `parted` package.
-

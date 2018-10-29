@@ -4,7 +4,7 @@ Using the SDK to cross compile
 ==============================
 
 Cross compiling with the help of the SDK is not much different from normal compilation. There are
-some more pitfalls, but let's get on with the happy cases for now.
+some more pitfalls, but let us get on with the happy cases for now.
 
 .. _sourcing-the-environment:
 
@@ -38,7 +38,7 @@ In the easiest case, when all the projects dependencies are already installed in
 cross-compiling is really easy. Navigate in to the directory and use cmake and make to compile it as
 you normally would. The environment will make sure that the right compiler and cmake will be used.
 
-In the case of additional external dependencies, it's recommended to install them into the SDK so
+In the case of additional external dependencies, it is recommended to install them into the SDK so
 that they can be found by tools like ``pkg-config``. The ``cmake`` tool provided with the SDK does
 that by default, so when building a shared library using ``cmake`` one would typically issue
 these commands:

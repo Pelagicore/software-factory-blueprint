@@ -100,7 +100,7 @@ following a schedule)
 An update mechanism has to guarantee fundamental security capabilities. The two
 mainly expected features are:
 
- - Integrity: this guarantees that data haven't been modified from the server
+ - Integrity: this guarantees that data has not been modified from the server
    to the client. (for example, by man-in-the-middle attacks)
 
  - Authentication: this guarantees that update have been created by an

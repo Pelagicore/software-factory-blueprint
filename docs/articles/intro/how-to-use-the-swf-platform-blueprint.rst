@@ -8,7 +8,7 @@ To understand some of the content in this page, please refer to
 :ref:`structure-and-nomenclature`.
 
 The first thing that needs to be done within a project is for the
-project to create it's own project specific SWF. This is done by
+project to create its own project specific SWF. This is done by
 creating a Deployment that extends the Blueprint with more content
 and also additional project specific content, see
 :ref:`create-a-swf-deployment`.

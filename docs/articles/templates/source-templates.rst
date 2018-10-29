@@ -50,7 +50,7 @@ those packages:
 
   1. Name of the test executable to be created;
   2. List of source files for the test (the macro takes care of adding the
-     googletest and googlemock related files, so you don't have to worry
+     googletest and googlemock related files, so you do not have to worry
      about them);
   3. Any additional libraries needed by your test. If none, use `""`.
 

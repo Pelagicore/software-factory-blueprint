@@ -41,7 +41,7 @@ registry.
    WantedBy=multi-user.target
 
 The docker registry is run on port 80 inside of the docker container so that
-users don't need to point to any special port, they would only use the domain,
+users do not need to point to any special port, they would only use the domain,
 image name and tag like ``example.com/ubuntu:16.04``.
 
 This will save the content of the registry in a docker volume called
@@ -128,8 +128,8 @@ Once it is started you should be able to access it via:
    http://localhost:8082/v2/
 
 
-After that you can also set up a nginx instance as a proxy so you don't
-need the port number in the URL, but you don't need to do that on your
+After that you can also set up an nginx instance as a proxy so you do not
+need the port number in the URL, but you do not need to do that on your
 development machine.
 
 In production you might want to add authentication for everything but GET and

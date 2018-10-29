@@ -3,9 +3,13 @@
 Jenkins
 =======
 
-Jenkins is the build server which utilizes build slaves to build code and to archive the artifacts from those builds.
+Jenkins is the build server which utilizes build slaves to build code and to archive the artifacts
+from those builds.
 
-The Jenkins project offers preinstalled Docker images which can be used to vastly shorten the setup time of such a server. Here is an example systemd service file which can be used to both set up and start a docker container which has a preinstalled instance of Jenkins. It will save the configuration in a docker volume called ``jenkins_home``.
+The Jenkins project offers preinstalled Docker images which can be used to vastly shorten the setup
+time of such a server. Here is an example systemd service file which can be used to both set up and
+start a docker container which has a preinstalled instance of Jenkins. It will save the
+configuration in a docker volume called ``jenkins_home``.
 
 .. code-block:: none
    :caption: docker.jenkins.service
@@ -70,7 +74,8 @@ nginx configuration
 
 Usage
 -----
-First, install docker according to the installation instructions for your distribution. These instructions are available in the Docker website [#dockerinstall]_.
+First, install docker according to the installation instructions for your distribution. These
+instructions are available in the Docker website [#dockerinstall]_.
 
 .. code-block:: bash
 
@@ -81,7 +86,8 @@ First, install docker according to the installation instructions for your distri
    systemctl enable docker.jenkins.service
    systemctl start docker.jenkins.service
 
-Starting it the first time can take a couple of minutes depending on your internet connection because it then downloads the docker image and sets everything up, so be patient.
+Starting it the first time can take a couple of minutes depending on your internet connection
+because it then downloads the docker image and sets everything up, so be patient.
 
 Once it is started you need the admin password which you can find in the logs:
 
@@ -94,13 +100,15 @@ Once it is started you need the admin password which you can find in the logs:
    Jul 03 12:37:22 vps429458 docker[9553]: 932c528c68d14e24aab036f2021e2dee
    Jul 03 12:37:22 vps429458 docker[9553]: This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 
-Then you can open this jenkins instance in your browser and put this password there so you can set everything up:
+Then you can open this jenkins instance in your browser and put this password there so you can set
+everything up:
 
 .. code-block:: none
 
    http://localhost:8080/jenkins/
 
-After that, you can also set up a nginx instance as a proxy so you don't need the port number in the URL, but you don't need to do that on your development machine.
+After that, you can also set up a nginx instance as a proxy so you do not need the port number in
+the URL, but you do not need to do that on your development machine.
 
 Plugins
 -------

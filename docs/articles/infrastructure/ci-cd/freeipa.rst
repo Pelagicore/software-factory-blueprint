@@ -12,25 +12,25 @@ login to multiple servers and websites with the same credentials.
 Server setup
 ------------
 
-This guide assumes you're running Ubuntu server 16:04 but should work for most
+This guide assumes you are running Ubuntu server 16:04 but should work for most
 major linux distributions.
 
 Prerequisites
 ^^^^^^^^^^^^^
 
-Choose a domain to use for your deployment. It's important that you have control
+Choose a domain to use for your deployment. It is important that you have control
 over it. Never use an example domain or a top domain which does not exist, it
-will only cause problems later on. It's okay to use a subdomain which is not
+will only cause problems later on. It is okay to use a subdomain which is not
 public though.
 
 .. warning::
 
-    It's recommended to use a dedicated host or VM (not docker) for running
+    It is recommended to use a dedicated host or VM (not docker) for running
     FreeIPA, with a dedicated IPv4 address. FreeIPA server integrates into a lot
     of services on the host and running other services on the same host will
     eventually cause problems.
 
-It's important that the server has a fully qualified domain name. You can either
+It is important that the server has a fully qualified domain name. You can either
 set the hostname when you create the server or set it from the command line
 after the server is created, using the hostname command:
 
@@ -209,7 +209,7 @@ the certificate server created during installation. Especially if it fails with
     rm -rf /etc/sysconfig/pki/tomcat/pki-tomcat
     rm -rf /var/lib/pki/pki-tomcat
     rm -rf /etc/pki/pki-tomcat
-    rm -rf /etc/default/pki-tomcat 
+    rm -rf /etc/default/pki-tomcat
     rm -rf /etc/dogtag/tomcat/pki-tomcat
     ipa-server-install --uninstall -U
 
@@ -218,7 +218,7 @@ the certificate server created during installation. Especially if it fails with
 Running docker with FreeIPA server
 """"""""""""""""""""""""""""""""""
 
-If you're running Docker on the same machine as FreeIPA server you will have
+If you are running Docker on the same machine as FreeIPA server you will have
 issues with DNS. Since FreeIPA acts as a DNS server it will add ``nameserver
 127.0.0.1`` to ``/etc/resolv.conf``. When setting up a new container, the
 docker daemon copies ``/etc/resolv.conf`` and filters out all localhost IP
@@ -238,7 +238,7 @@ add an entry to ``/etc/docker/daemon.json``:
 Client
 ^^^^^^
 
-If you cannot find a ipa user using the id command, it's most probably because
+If you cannot find a ipa user using the id command, it is most probably because
 of a misconfigured nsswitch.conf Make sure to add 'sss' at the appropriate
 places according to the example below. The ordering is important. 'sss' should
 always be after 'compat' or 'files'. This dictates in which order the system

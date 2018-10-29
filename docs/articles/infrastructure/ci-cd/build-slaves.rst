@@ -57,7 +57,10 @@ Connecting to the slave using SSH
 Generating SSH key pairs
 """"""""""""""""""""""""
 
-A private and public SSH key pair must be generated. The Jenkins master server will connect to the Jenkins build slaves using SSH. The Jenkins master server will have the SSH *private* key, in order to initiate the SSH connection, and the Jenkins build slaves will have *public* keys added to their respective ``jenkins`` users.
+A private and public SSH key pair must be generated. The Jenkins master server will connect to the
+Jenkins build slaves using SSH. The Jenkins master server will have the SSH *private* key, in
+order to initiate the SSH connection, and the Jenkins build slaves will have *public* keys added to
+their respective ``jenkins`` users.
 
 Generate one key pair per build slave using the following command:
 
@@ -101,14 +104,18 @@ You may verify the status of the build slave under the status page of the build 
 Running a private slave
 -----------------------
 
-Sometimes it's necessary to run slaves from a private network. Then you need to run a java program which will connect to the master instead of the master connecting to the slave. To do so, set up a new slave in Jenkins.
+Sometimes it is necessary to run slaves from a private network. Then you need to run a java
+program which will connect to the master instead of the master connecting to the slave. To do
+so, set up a new slave in Jenkins.
 
 Prerequisites
 ^^^^^^^^^^^^^
 
-You need to have the same Java version running on the slave as your Jenkins master runs. Nowadays the docker LTS version runs Java 8.
+You need to have the same Java version running on the slave as your Jenkins master runs. Nowadays
+the docker LTS version runs Java 8.
 
-Best practice is also to create a UNIX user the slave will run with on your machine, you can call the user jenkins. If you will run Docker, make sure this user is in the ``docker`` group.
+Best practice is also to create a UNIX user the slave will run with on your machine, you can call
+the user jenkins. If you will run Docker, make sure this user is in the ``docker`` group.
 
 How to setup and install
 ^^^^^^^^^^^^^^^^^^^^^^^^

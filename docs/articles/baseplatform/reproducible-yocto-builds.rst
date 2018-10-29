@@ -31,7 +31,8 @@ The general solution to guarantee reproducibility is to let the Yocto build envi
 archives of the downloaded sources and place these in a local mirror during a build.
 This local mirror can then be used when reproducing the build, a solution that works in most cases.
 The exception is when a package's source code is stored in a git repository and the recipe for the
-package does not point to a specific commit but a tag, then Yocto won't create a tar archive for it since it has to fetch the latest revision that the tag points to.
+package does not point to a specific commit but a tag, then Yocto will not create a tar archive
+for it since it has to fetch the latest revision that the tag points to.
 
 Building with BB_NO_NETWORK
 ---------------------------
