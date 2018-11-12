@@ -1,4 +1,4 @@
-:orphan:
+.. _view-dlt-logs:
 
 Reading System Logs with DLT
 ============================
