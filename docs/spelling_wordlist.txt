@@ -347,3 +347,14 @@ initramfs
 efi
 partprobe
 lfs
+initramdisk
+Swupd
+Autosar
+firmwares
+Bootloaders
+QML
+Aktualizr
+Hawkbit
+failsafe
+DBus
+Uptane
