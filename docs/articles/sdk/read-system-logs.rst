@@ -107,6 +107,8 @@ get started with `a simple service example in the dlt-daemon repository`_.
 
 For a detailed tutorial on how to get started, follow the `DLT cheatsheet`_.
 
+.. tags:: howto
+
 .. _`DLT`: https://at.projects.genivi.org/wiki/display/PROJ/Diagnostic+Log+and+Trace
 .. _`Raspberry Pi documentation`: https://www.raspberrypi.org/documentation/remote-access/ip-address.md
 .. _`dlt-adaptor-stdin`: https://github.com/GENIVI/dlt-daemon/blob/master/src/adaptor/dlt-adaptor-stdin.c
