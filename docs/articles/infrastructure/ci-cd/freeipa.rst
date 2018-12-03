@@ -61,7 +61,7 @@ Installation
 .. code-block:: bash
     :caption: Install the packages
 
-    sudo apt install freeipa-server freeipa-server-dns
+    apt install freeipa-server freeipa-server-dns
 
 .. code-block:: bash
     :caption: Setup the FreeIPA server
@@ -116,35 +116,36 @@ machine is controlled centrally from FreeIPA through policies.
 
 .. code-block:: bash
 
-    sudo apt install freeipa-client
+    apt install freeipa-client
 
 Set fully qualified hostname with
 
 .. code-block:: bash
 
     # Example value
-    sudo hostname host.example.com
+    hostname host.example.com
 
-Edit ``/etc/resolvconf/resolv.conf/base`` and put the ipaserver first:
+Edit ``/etc/resolvconf/resolv.conf/head`` and put the ipaserver first:
 
 .. code-block:: none
-    :caption: Example /etc/resolvconf/resolv.conf/base
+    :caption: Example /etc/resolvconf/resolv.conf/head
 
-    nameserver ipa_server_ipv4
-    nameserver replica_ipv4
-    nameserver backup_dns_ipv4
+    nameserver 192.0.2.5
+    nameserver 192.0.2.6
+    # Fallback DNS
+    nameserver 8.8.8.8
 
 Update resolv.conf using:
 
 .. code-block:: none
 
-    sudo resolvconf -u
+    resolvconf -u
 
 Enroll client and use autodiscovery through DNS to find all the settings
 
 .. code-block:: none
 
-    sudo ipa-client-install --mkhomedir --enable-dns-updates --force-ntpd
+    ipa-client-install --mkhomedir --enable-dns-updates --force-ntpd
 
 If you did not install DNS with the FreeIPA server or cannot change the
 nameserver on the client, you need to specify the server address and the logical
@@ -152,7 +153,15 @@ domain.
 
 .. code-block:: none
 
-    sudo ipa-client-install --mkhomedir --enable-dns-updates --force-ntpd --server=host.example.com --domain=example.com
+    ipa-client-install --mkhomedir --enable-dns-updates --force-ntpd --server=host.example.com --domain=example.com
+
+On Ubuntu 16.04 you need to enable home directory creation manually:
+
+.. code-block:: none
+
+    sed -i -r -e 's/Default:\s\w+/Default: yes/;' /usr/share/pam-configs/mkhomedir
+    # and add the homedir option manually because it cannot be scripted.
+    pam-auth-update
 
 Verify connectivity
 ^^^^^^^^^^^^^^^^^^^
@@ -187,7 +196,7 @@ the certificate server.
 
 .. code-block:: bash
 
-    sudo journalctl -xe -u pki-tomcatd
+    journalctl -xe -u pki-tomcatd
 
 If you find something like "Unable to stat /bin/java" it means that the java
 path is misconfigured. Find java through 'which java' and create a symbolic link
@@ -195,7 +204,7 @@ in place of the missing binary.
 
 .. code-block:: bash
 
-    sudo ln -s /bin/java /path/to/java
+    ln -s /path/to/java /bin/java
 
 When an installation fails it may be necessary to delete the configuration for
 the certificate server created during installation. Especially if it fails with
@@ -295,9 +304,9 @@ Remove OpenLDAP connection
 """"""""""""""""""""""""""
 .. code-block:: bash
 
-    sudo apt purge libnss-ldapd libpam-ldapd nslcd nscd
+    apt purge libnss-ldapd libpam-ldapd nslcd nscd
     # You may also want to
-    sudo apt autoremove
+    apt autoremove
 
 Edit nsswitch.conf and remove references to LDAP.
 
