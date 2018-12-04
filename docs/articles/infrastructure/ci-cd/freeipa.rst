@@ -130,7 +130,9 @@ Edit ``/etc/resolvconf/resolv.conf/head`` and put the ipaserver first:
 .. code-block:: none
     :caption: Example /etc/resolvconf/resolv.conf/head
 
+    # Master
     nameserver 192.0.2.5
+    # Replica
     nameserver 192.0.2.6
     # Fallback DNS
     nameserver 8.8.8.8
@@ -180,13 +182,172 @@ fails.
 
     uid=733200000(admin) gid=733200000(admins) groups=733200000(admins)
 
+Install replica
+---------------
+
+A replica server is a FreeIPA server set up to replicate data. If the master
+goes down, clients will still be able to authenticate users against the replica.
+If the replica is also setup as a DNS and CA, the replica can be set as master
+in case the master is lost and disaster recovery has to be performed.
+
+Install required packages:
+.. code-block:: none
+
+    apt install -y freeipa-server freeipa-server-dns
+
+If you have not already, enroll the replica server to the domain as described
+above.
+
+On the master server, first get a ticket with an admin user:
+
+.. code-block:: none
+
+    kinit jdoe
+
+Then add the FQDN of the replica into the ipaservers group:
+
+.. code-block:: none
+
+    ipa hostgroup-add-member ipaservers --hosts replica1.example.com
+
+Check that the command ``ipa hostgroup-find`` finds both servers:
+
+.. code-block:: none
+
+    ipa hostgroup-find
+    -------------------
+    1 hostgroup matched
+    -------------------
+      Host-group: ipaservers
+      Description: IPA server hosts
+      Member hosts: ipa-server.example.com, replica1.example.com
+    ----------------------------
+    Number of entries returned 1
+    ----------------------------
+
+And also that ``ipa host-find`` command finds both master and replica servers.
+
+.. code-block:: none
+
+    ipa host-find
+
+On the replica server, modify ``/etc/hosts`` and add replica1:
+
+.. code-block:: none
+    :caption: Example /etc/hosts
+
+    192.0.2.6 replica1.example.com replica1
+
+If you use FreeIPA as your DNS, you may also want to add a reverse DNS entry for
+the replica but it is not necessary.
+
+Then start the setup:
+
+.. code-block:: none
+
+    ipa-replica-install
+    WARNING: conflicting time&date synchronization service 'chronyd' will
+    be disabled in favor of ntpd
+
+    ipa         : ERROR    Reverse DNS resolution of address 192.0.2.5 (ipa-server.example.com) failed. Clients may not function properly. Please check your DNS setup. (Note that this check queries IPA DNS directly and ignores /etc/hosts.)
+    Continue? [no]: yes
+    Run connection check to master
+    Connection check OK
+    Configuring NTP daemon (ntpd)
+      [1/4]: stopping ntpd
+      [2/4]: writing configuration
+      [3/4]: configuring ntpd to start on boot
+      [4/4]: starting ntpd
+    Done configuring NTP daemon (ntpd).
+    Configuring directory server (dirsrv). Estimated time: 1 minute
+
+
+.. tip::
+    It is ok if ipa-replica-install gives a warning message about "Reverse DNS
+    resolution". The replica will function without it.
+    
+
+Setup DNS on replica
+^^^^^^^^^^^^^^^^^^^^
+
+It is a good idea to setup DNS on at least one of your replicas and use it as a
+failover DNS on the clients. This can only be done once the host is setup as a
+replica.
+
+Configure the same forwarders as your master ipa server:
+
+.. code-block:: none
+    :caption: Example installation of IPA DNS
+
+    ipa-dns-install
+
+    The log file for this installation can be found in /var/log/ipaserver-install.log
+    ==============================================================================
+    This program will setup DNS for the FreeIPA Server.
+
+    This includes:
+      * Configure DNS (bind)
+      * Configure SoftHSM (required by DNSSEC)
+      * Configure ipa-dnskeysyncd (required by DNSSEC)
+
+    NOTE: DNSSEC zone signing is not enabled by default
+
+
+    To accept the default shown in brackets, press the Enter key.
+
+    Do you want to configure DNS forwarders? [yes]: 
+    Following DNS servers are configured in /etc/resolv.conf: 198.51.100.53, 192.0.2.66, 192.0.2.67
+    Do you want to configure these servers as DNS forwarders? [yes]: no
+    Enter an IP address for a DNS forwarder, or press Enter to skip: 192.0.2.66
+    DNS forwarder 192.0.2.66 added. You may add another.
+    Enter an IP address for a DNS forwarder, or press Enter to skip: 192.0.2.67
+    DNS forwarder 192.0.2.67 added. You may add another.
+    Enter an IP address for a DNS forwarder, or press Enter to skip: 
+    Checking DNS forwarders, please wait ...
+    Do you want to search for missing reverse zones? [yes]: 
+
+    The following operations may take some minutes to complete.
+    Please wait until the prompt is returned.
+
+If the installation fails, follow the instructions in the 
+:ref:`troubleshooting-replica` section to remove the installation and start
+again by setting up the replica.
+
+You can verify that DNS is working with dig.
+
+.. code-block:: none
+
+    dig ipa-server.example.com @127.0.0.1
+    dig ipa-server.example.com @192.0.2.5
+
+Setup CA on replica
+^^^^^^^^^^^^^^^^^^^
+
+Make sure /bin/java exists, otherwise symlink it to the proper binary. On ubuntu
+16.04 it is /usr/bin/java . Otherwise it will cause the certificate server to
+not start/restart during installation. 
+
+.. code-block:: none
+
+    ln -s /usr/bin/java /bin/java
+
+Then have the Directory Manager password ready and start the installation:
+
+.. code-block:: none
+
+    ipa-ca-install
+
+If the installation fails, follow the instructions in the
+:ref:`troubleshooting-replica` section to remove the installation. Then start
+again by setting up the replica.
+
 .. _troubleshooting:
 
 Troubleshooting
 ---------------
 
-Server
-^^^^^^
+Server troubleshooting
+^^^^^^^^^^^^^^^^^^^^^^
 
 Installation issues
 """""""""""""""""""
@@ -244,8 +405,8 @@ add an entry to ``/etc/docker/daemon.json``:
         "dns": ["198.51.100.5", "198.51.100.6"]
     }
 
-Client
-^^^^^^
+Client troubleshooting
+^^^^^^^^^^^^^^^^^^^^^^
 
 If you cannot find a ipa user using the id command, it is most probably because
 of a misconfigured nsswitch.conf Make sure to add 'sss' at the appropriate
@@ -325,4 +486,101 @@ Try to identify an LDAP user:
     # Should return "no such user"
     id someldapuser
 
+.. _troubleshooting-replica:
+
+Replica troubleshooting
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Browser certificate problem
+"""""""""""""""""""""""""""
+
+If you find yourself re-installing FreeIPA server you will run into certificate
+problems when accessing the Web UI. This is because the certificate server
+does not randomize the ID:s of the generated certificates. This is because the
+browser not accept different certificates with the same Domain, Subject and
+Serial Number. To mitigate this you can either pass an argument during
+installation to change the Subject or configure the Dogtag server to randomize
+ID:s.
+
+Set the subject:
+
+.. code-block:: bash
+
+    ipa-server-install --setup-dns --hostname=ipa.example.com --realm=IPA.EXAMPLE.COM --domain=ipa.example.com --subject="O=EXAMPLE.COM 20181112"
+
+Or modify Dogtag through the following parameter in
+/etc/dogtag/tomcat/pki-tomcat/ca/default.cfg :
+
+.. code-block:: bash
+    :caption: Snippet from /etc/dogtag/tomcat/pki-tomcat/ca/default.cfg
+
+    [CA]
+    pki_random_serial_numbers_enable=True
+
+Also described on the Dogtag wiki [#dogtag_serial_numbers]_.
+
+CA fails to start
+"""""""""""""""""
+
+If ``ipa-ca-install`` fails configuring the CA instance with the following
+output:
+
+.. code-block:: none
+
+    ipa-ca-install
+    Directory Manager (existing master) password: 
+
+    Run connection check to master
+    Connection check OK
+    /usr/lib/python2.7/dist-packages/urllib3/connection.py:266: SubjectAltNameWarning: Certificate for replica1.example.com has no `subjectAltName`, falling back to check for a `commonName` for now. This feature is being removed by major browsers and deprecated by RFC 2818. (See https://github.com/shazow/urllib3/issues/497 for details.)
+      SubjectAltNameWarning
+    Configuring certificate server (pki-tomcatd). Estimated time: 3 minutes 30 seconds
+      [1/23]: creating certificate server user
+      [2/23]: creating certificate server db
+      [3/23]: setting up initial replication
+    Starting replication, please wait until this has completed.
+    Update in progress, 3 seconds elapsed
+    Update succeeded
+
+      [4/23]: creating installation admin user
+      [5/23]: setting up certificate server
+    ipa.ipaserver.install.cainstance.CAInstance: CRITICAL Failed to configure CA instance: Command '/usr/sbin/pkispawn -s CA -f /tmp/tmpkb9ORA' returned non-zero exit status 1
+    ipa.ipaserver.install.cainstance.CAInstance: CRITICAL See the installation logs and the following files/directories for more information:
+    ipa.ipaserver.install.cainstance.CAInstance: CRITICAL   /var/log/pki/pki-tomcat
+      [error] RuntimeError: CA configuration failed.
+
+It may mean that it cannot find java. You need to make sure /bin/java exists.
+If it does not, symlink it to the proper place. In Ubuntu 16.04 do::
+
+    ln -s /usr/bin/java /bin/java
+
+Failed setting up ds
+""""""""""""""""""""
+
+If the replica installation fails with the following.
+
+.. code-block:: none
+
+    [error] RuntimeError: failed to create ds instance Command '/usr/sbin/setup-ds --silent --logfile - -f /tmp/tmpuhBVEm' returned non-zero exit status 1
+
+It may be that you either misconfigured /etc/hosts or need to add a reverse
+DNS entry for the replica.
+
+Removing failed installation
+""""""""""""""""""""""""""""
+
+If any of the steps fail during installation you need to run 
+``ipa-server-install --uninstall`` a few times to clean the system. 2-3 should
+do it. This is to ensure all configurations are cleared if you tried installing
+multiple times. After that you need to re-enroll the client before continuing
+with ``ipa-client-install --enable-dns-updates --force-join`` (Do not forget to
+re-enable mkhomedir).
+
+.. code-block:: none
+
+    /usr/sbin/ipa-server-install --uninstall
+
+
 .. [#SSSD] https://wiki.archlinux.org/index.php/LDAP_authentication#Online_and_Offline_Authentication_with_SSSD
+
+.. [#dogtag_serial_numbers] https://www.dogtagpki.org/wiki/Random_Certificate_Serial_Numbers
