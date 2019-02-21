@@ -1,10 +1,7 @@
-
 # Software Factory Blueprint
 PELUX Software Factory Blueprint documentation
 
 Software Factory Blueprint is maintained at https://github.com/Pelagicore/software-factory-blueprint
-
-Maintainer: Joakim Gross <joakim.gross@pelagicore.com>
 
 ## Note
 You probably don't want to build the blueprint on its own, but rather use it as part of a deployment
@@ -84,7 +81,8 @@ To build the docs without checking the spelling, type:
     make sphinx-html
 
 # License and Copyright
-Copyright (C) Pelagicore AB 2017
+Copyright &copy; 2017 Pelagicore AB
+Copyright &copy; 2018-2019 Luxoft Sweden AB
 
 This work is licensed under the Creative Commons
 Attribution-ShareAlike 4.0 International License. To view a copy of
