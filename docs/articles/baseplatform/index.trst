@@ -11,4 +11,6 @@ Base platform
     creating-sdk.rst
     creating-a-new-layer.rst
     variant-concept-in-yocto.rst
-    reproducible-yocto-builds
+    reproducible-yocto-builds.rst
+    measuring-startup-performance-with-systemd-analyze.rst
+
