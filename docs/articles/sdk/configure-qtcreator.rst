@@ -65,13 +65,13 @@ Compilers
 * Click the ``Add`` button on the right and go to *GCC -> C*
     * In the bottom part of the window, name your C Compiler with something like *GCC
       PELUX Raspberry Pi*
-    * For the path of the compiler, use the results of the ``which `echo ${CC} | awk
-      '{print $1}'``` command ran in an SDK terminal
+    * For the path of the compiler, use the results of the ``which echo ${CC} | awk
+      '{print $1}'`` command ran in an SDK terminal
 * Click the ``Add`` button and go to *GCC -> C++*
     * In the bottom part of the window, name your C++ Compiler with something like *G++
       PELUX Raspberry Pi*
-    * For the path of the compiler, use the result of the ``which `echo ${CXX} | awk
-      '{print $1}'``` command ran in an SDK terminal
+    * For the path of the compiler, use the result of the ``which echo ${CXX} | awk
+      '{print $1}'`` command ran in an SDK terminal
 
 Debugger
 ^^^^^^^^
@@ -82,7 +82,7 @@ Debugger
 * Click the ``Add`` button on the right
 * In the bottom part of the window, name your Debugger with something like *GDB
   PELUX Raspberry Pi*
-* For the path of the debugger, use the result of the ``which $GDB``` command ran in
+* For the path of the debugger, use the result of the ``which $GDB`` command ran in
   an SDK terminal
 
 CMake
@@ -94,7 +94,7 @@ CMake
 * Click the ``Add`` button on the right
 * In the bottom part of the window, name your CMake with something like *CMake PELUX
   Raspberry Pi*
-* For the path of the debugger, use the result of the ``which cmake``` command ran in
+* For the path of the debugger, use the result of the ``which cmake`` command ran in
   an SDK terminal
 
 Qt (optional)
@@ -106,7 +106,7 @@ However, if you want to be able to use Qt:
 * Select the ``Qt Versions`` tab
 * Click the ``Add...`` button on the right
 * In the window that opens, select the qmake whose path is the result of the ``which
-  qmake``` command ran in an SDK terminal
+  qmake`` command ran in an SDK terminal
 * In the bottom part of the window, name your Qt version with something like *Qt 5.10.1
   PELUX Raspberry Pi*
 
