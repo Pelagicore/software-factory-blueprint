@@ -3,7 +3,7 @@
 Create an initial index
 ***********************
 
-The actual structure of the documentation might be quite different of the file
+The actual structure of the documentation might be quite different to the file
 structure of the restructured text files. To set up a useful structure the
 ``docs/index.rst`` file is used, which in it self points to articles and deeper
 index files for chapters, etc. This file makes it also possible to reuse the
