@@ -34,7 +34,7 @@ Requirements
 
 In order to meet safety concerns, an update mechanism has to be fault
 resilient. For instance, if a power failure happens during an update, the
-system shouldn't end up in an inconsistent state. This requirement implies that
+system should not end up in an inconsistent state. This requirement implies that
 updates have to be atomic/transactional. (i.e: never partially applied)
 
 In order to modify the rootfs without affecting the system execution, the
