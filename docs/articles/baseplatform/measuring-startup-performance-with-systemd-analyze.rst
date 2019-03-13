@@ -10,7 +10,7 @@ and other state and tracing information from the system and service manager, and
 an SVG plot showing units waiting for their dependencies.
 
 You can see which unit files are causing your boot process to slow down. You can then optimize
-your system accordingly.
+your system accordingly. [#1]_
 
 Using systemd-analyze
 ---------------------
@@ -29,20 +29,23 @@ To retrieve statistics information from systemd, run:
 To list the started unit files, sorted by the time each of them took to start up:
 
 .. code:: bash
+
     $ systemd-analyze blame
 
 At some points of the boot process, things can not proceed until a given unit succeeds.
-To see which units find themselves at these critical points in the startup chain, do:
+To see which units find themselves at these critical points in the startup chain, do: [#2]_
 
 .. code:: bash
+
     $ systemd-analyze critical-chain
 
 To generate SVG file which describes the boot process graphically, run:
 
 .. code:: bash
+
     $ systemd-analyze plot > plot.svg
 
 Citations
 ---------
-.. [#] https://wiki.archlinux.org/index.php/Improving_performance/Boot_process
-.. [#] https://www.freedesktop.org/software/systemd/man/systemd-analyze.html
+.. [#1] https://wiki.archlinux.org/index.php/Improving_performance/Boot_process
+.. [#2] https://www.freedesktop.org/software/systemd/man/systemd-analyze.html
