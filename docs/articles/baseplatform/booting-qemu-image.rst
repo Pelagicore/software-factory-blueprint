@@ -2,22 +2,81 @@
 
 .. _booting-a-qemu-image:
 
-Booting up a QEMU image
-=======================
+####################################
+Building and booting up a QEMU image
+####################################
+
+Booting a QEMU image can be using one of the two scripts
+
+- ``runqemu``
+- ``qemu_launcher``
+
+Both are scripts but they are offered from different layers. ``runqemu`` is part of OpenEmbedded while qemu_launcher is part of meta-pelux. ``qemu_launcher`` requires enabling the virtualization on BIOS while ``runqemu`` is more straight forward and simple. Both options are described below. 
+
+******************************
+Building pelux for QEMU target
+******************************
+
+First we need to have a build. 
+
+On a directory of choice, run:
+
+.. code-block:: bash
+
+  $ repo init - u https://github.com/pelagicore/pelux-manifests
+  $ repo sync
+
+This will create the ``.repo`` and ``sources`` directories. Now we need to create a build directory and source the qemu configuration by running the following command
+
+.. code-block:: bash
+
+  TEMPLATECONF=`pwd`/sources/meta-pelux/conf/variant/qemu-x86-64_nogfx source sources/poky/oe-init-build-env build
+
+Now you can start bitbaking the image, and configure your environment for qemu.
+
+.. code-block:: bash
+
+          # Bitbake core-image-pelux-minimal-dev for qemu-x86-64_nogfx target
+          $ bitbake core-image-pelux-minimal-dev
+
+          # Make sure we have the required utilities
+          $ bitbake qemu-helper-native
+
+          # Set up networking for qemu
+          $ sudo ../sources/poky/scripts/runqemu-gen-tapdevs 1000 1000 4 tmp/sysroots-components/x86_64/qemu-helper-native/usr/bin
+
+          # Give qemu permissions to access tun interfaces
+          $ sudo setcap cap_net_admin+ep $(find tmp/work/ -name qemu-system-x86_64 | grep qemu-helper-native)
+
+The build is done and you are ready to boot up qemu.
+
+Run qemu script
+---------------
+Finally, you can ``runqemu`` 
+
+.. code-block:: bash
+
+          $  runqemu
+
+Now on another terminal of the same machine, you should be able run ``ssh root@192.168.7.2``. 
+
+QEMU launch script
+------------------
+
+``qemu_launcher`` aims for the same goal as ``runqemu`` but is aimed more towards KVM. It wraps up the kvm command and provides simple options to launch images without loosing the flexibility to adjust parameters like memory, cpu, etc.
 
 Images for QEMU target can be booted up using KVM [#kvm]_ to utilize hardware
 virtualization feature if found on the host system and run the virtual
 machine in better performance.
 See KVM feature for QEMU [#qemu_kvm_feature]_.
 
-QEMU launch script
-------------------
+ 
 
 There is a QEMU launch script called ``qemu_launcher``, which is shipped with SDK and also available from yocto builds.
 
 .. code-block:: bash
 
-	$ ./qemu_launcher -h
+  $ ./qemu_launcher -h
 	usage: ./qemu_launcher [options]
 	[options] is any of the following:
         -f | --folder        Specify a source folder of the QEMU image
