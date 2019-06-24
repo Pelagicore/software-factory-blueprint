@@ -6,6 +6,35 @@ Deploying the image
 This section describes how to deploy the build output, a ready disk-image, to a removable media.
 Further information can be found in the `Poky documentation`_.
 
+Using bmap-tools
+------------------------
+
+Use bmap-tools to write an Intel image to a disk more than twice faster than
+``dd``. You will need two files, both of them will be found on
+``/tmp/deploy/images/<architecture>/``.
+
+The image name and bmap file will have these suffixes:
+
+- <image>.rootfs.wic
+- <image>.rootfs.wic.bmap 
+
+To flash the image, run:
+
+.. code-block:: bash
+
+    sudo bmaptool copy --bmap <bmap-filename> <image-name> <host-device>
+
+.. note:: In case bmap gives the error "[Errno 16] Device or resource
+          busy", make sure the disk partitions are unmounted. 
+
+Prerequisites
+^^^^^^^^^^^^^
+You will need to install the bmap tools.
+
+.. code-block:: bash
+
+    sudo apt-get install bmap-tools
+
 General instructions
 --------------------
 Use the ``dd`` utility to write the image to the raw block device. For example:

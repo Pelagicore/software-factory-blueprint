@@ -1,3 +1,7 @@
+unmount
+Errno
+bmap
+wic
 titlesonly
 wildcard
 proj
