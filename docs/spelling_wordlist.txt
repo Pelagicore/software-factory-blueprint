@@ -380,3 +380,6 @@ ok
 ds
 hav
 bz
+psplash
+PSplash
+bootsplash

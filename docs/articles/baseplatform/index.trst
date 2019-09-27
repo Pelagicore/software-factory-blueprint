@@ -13,4 +13,5 @@ Base platform
     variant-concept-in-yocto.rst
     reproducible-yocto-builds.rst
     measuring-startup-performance-with-systemd-analyze.rst
+    changing-bootsplash.rst
 
